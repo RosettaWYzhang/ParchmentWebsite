@@ -1,0 +1,15 @@
+/*html { margin-bottom: 200px }*/
+
+body {
+   min-height: 400px;
+   margin-bottom: 100px;
+   clear: both;
+}
+
+nav{
+    background-image:url("../images/ucl-banner-warmgrey.png");
+}
+
+footer{
+    background-image:url("../images/ucl-banner-warmgrey.png");
+}
