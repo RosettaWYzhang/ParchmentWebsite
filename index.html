@@ -16,7 +16,6 @@
     <!-- Custom styles for this template -->
     <link href="css/business-frontpage.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-
   </head>
 
   <body>
@@ -44,29 +43,45 @@
             <li class="nav-item">
               <a class="nav-link" href="documentation.html">Documentation</a>
             </li>
-            <!--<li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
-            </li>-->
+            <li class="nav-item">
+              <a class="nav-link" onclick="document.getElementById('id01').style.display='block'" style="width:auto;" href="#">Login</a>
+            </li>
           </ul>
         </div>
       </div>
     </nav>
 
-    <!-- Header with Background Image -->
-    <!--
-    <header class="business-header">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <h1 class="display-3 text-center text-white mt-4">Business Name or Tagline</h1>
-          </div>
-        </div>
-      </div>
-    </header>
-  -->
-
     <!-- Page Content -->
     <div class="container">
+
+
+      <div id="id01" class="modal">
+        <form class="modal-content animate" action="/action_page.php">
+          <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <img src="images/tim.png" alt="Avatar" class="avatar">
+          </div>
+
+          <div class="container">
+            <label><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" required>
+
+            <label><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+
+            <button type="submit">Login</button>
+            <label>
+              <input type="checkbox" checked="checked"> Remember me
+            </label>
+          </div>
+
+          <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+          </div>
+        </form>
+      </div>
+
 
       <div class="row">
         <div class="col-sm-8">
@@ -88,11 +103,6 @@
             <br>
           </address>
           <address>
-            <!--
-            <abbr title="Phone">P:</abbr>
-            (123) 456-7890
-            <br>-->
-            <!--<abbr title="Email">Email:</abbr>-->
             <p>Email:
             <a href="mailto:#">t.weyrich@cs.ucl.ac.uk</a><br>
             <a href = "http://reality.cs.ucl.ac.uk/weyrich.html">Web page</a><br>
@@ -113,49 +123,7 @@
             <a class="btn btn-primary btn-lg" href="services.html">Start flattening your parchment &raquo;</a>
           </p>
         </div>
-
       </div>
-      <!--
-      <div class="row">
-        <div class="col-sm-4 my-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Find Out More!</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-4 my-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus totam ut praesentium aut.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Find Out More!</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-4 my-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Find Out More!</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    -->
       <!-- /.row -->
     </div>
     <!-- /.container -->
@@ -169,9 +137,8 @@
     </footer>
 
     <!-- Bootstrap core JavaScript -->
+    <script src="js/script.js"></script>
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
   </body>
-
 </html>
