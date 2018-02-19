@@ -82,13 +82,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             /* Password is correct, so start a new session and
                             save the username to the session */
                             echo "password is correct\n";
-                            echo "$password\n";
-                            echo "hashed_password\n";
                             session_start();
                             $_SESSION['username'] = $username;
                             header("location: welcome.php");
                         } else{
                             echo "password not valid\n";
+                            echo "$password\n";
+                            echo "$hashed_password\n";
                             // Display an error message if password is not valid
                             $password_err = 'The password you entered was not valid.';
                         }
