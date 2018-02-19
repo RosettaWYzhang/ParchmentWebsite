@@ -9,8 +9,7 @@ echo "$total";
 //else{
 
 // Unique id for the process request
-// $id = uniqid (rand(), true);
-$id = "Hello Wanyue";
+$id = uniqid (rand(), true);
 // $target_dir = "uploads/" . $uniqid . "/";
 $target_dir = "uploads/";
 echo "targetdir ";
