@@ -30,6 +30,7 @@
 -->
 
 <?php
+global $link;
 ini_set('display_errors', 1);
 // Include config file
 require_once 'config.php';

@@ -1,7 +1,5 @@
-ini_set('display_errors', 1);
-
 <?php
-
+ini_set('display_errors', 1);
 $total = count($_FILES['fileToUpload']['name']);
 echo "$total";
 //if($total < 20){
