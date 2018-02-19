@@ -7,11 +7,10 @@ $db_name = 'login';
 
 //Establishes the connection
 $conn = mysqli_init();
-$db=mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
-if (mysqli_connect_errno($conn)) {
-die('Failed to connect to MySQL: '.mysqli_connect_error());
-}
+$link = mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
 
-//Close the connection
-mysqli_close($conn);
+// Check connection
+if($link === false){
+    die("ERROR: Could not connect. " . mysqli_connect_error());
+}
 ?>
