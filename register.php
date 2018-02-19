@@ -133,3 +133,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </div>
 </body>
 </html>
+
+
+<!--
+Azure login string
+$con=mysqli_init(); mysqli_ssl_set($con, NULL, NULL, {ca-cert filename}, NULL, NULL); mysqli_real_connect($con, "{host_name}", "{your_username}", {your_password}, {your_database}, 3306);
+-->

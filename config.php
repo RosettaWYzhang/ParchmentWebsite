@@ -3,7 +3,7 @@
 $host = 'parchmentdb.mysql.database.azure.com';
 $username = 'team35@parchmentdb';
 $password = 'parchment35!';
-$db_name = 'users';
+$db_name = 'login';
 
 //Establishes the connection
 $conn = mysqli_init();
