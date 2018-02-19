@@ -90,7 +90,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             echo "$password\n";
                             echo "$hashed_password\n";
                             $answer = password_verify($password, $hashed_password);
-                            echo "$answer"
+                            echo "$answer";
                             // Display an error message if password is not valid
                             $password_err = 'The password you entered was not valid.';
                         }
