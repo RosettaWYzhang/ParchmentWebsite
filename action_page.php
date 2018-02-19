@@ -58,7 +58,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate credentials
     if(empty($username_err) && empty($password_err)){
         // Prepare a select statement
-        echo "entered validate credentials";
+        echo "entered validate credentials\n";
         $sql = "SELECT username, password FROM users WHERE username = ?";
 
         if($stmt = mysqli_prepare($link, $sql)){
@@ -81,12 +81,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         if(password_verify($password, $hashed_password)){
                             /* Password is correct, so start a new session and
                             save the username to the session */
-                            echo "password is correct";
+                            echo "password is correct\n";
                             session_start();
                             $_SESSION['username'] = $username;
                             header("location: welcome.php");
                         } else{
-                            echo "password not valid";
+                            echo "password not valid\n";
+                            echo "$password\n";
+                            echo "$hashed_password\n";
                             // Display an error message if password is not valid
                             $password_err = 'The password you entered was not valid.';
                         }
