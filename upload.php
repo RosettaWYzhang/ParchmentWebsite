@@ -14,7 +14,7 @@ echo "$total";
 // Unique id for the process request
 $uniqid = ( [ string $prefix = "" [, bool $more_entropy = FALSE ]] )
 $target_dir = "uploads/" . $uniqid;
-echo $target_dir;
+// echo $target_dir;
 // if( is_dir($target_dir) === false ) // Should always be false, as it is a unique id
 // {
 //     mkdir($target_dir);
