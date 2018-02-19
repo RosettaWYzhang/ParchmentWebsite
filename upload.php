@@ -8,10 +8,10 @@ echo "$total";
 
 //else{
 
-// Unique id for the process request
-// $uniqid = ( [ string $prefix = "" [, bool $more_entropy = FALSE ]] )
-// $target_dir = "uploads/" . $uniqid . "/";
-$target_dir = "uploads/";
+Unique id for the process request
+$uniqid = ( [ string $prefix = "" [, bool $more_entropy = FALSE ]] )
+$target_dir = "uploads/" . $uniqid . "/";
+// $target_dir = "uploads/";
 echo "targetdir ";
 echo $target_dir;
 if( is_dir($target_dir) === false ) // Should always be false, as it is a unique id
