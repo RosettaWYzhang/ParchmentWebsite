@@ -7,7 +7,10 @@ echo "$total";
 //}
 
 //else{
-$target_dir = "uploads/";
+
+// Unique id for the process request
+$uniqid = ( [ string $prefix = "" [, bool $more_entropy = FALSE ]] )
+$target_dir = "uploads/" . $uniqid;
 echo "before loop";
 for($i=0; $i<$total;$i++){
     echo "loop is entered";
