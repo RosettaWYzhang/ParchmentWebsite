@@ -113,9 +113,8 @@ if(isset( $_SESSION['username']) && !empty($_SESSION['username'])):?>
 <?php
 
     else:
-
-        header("location:login.html"); // take them to page
-     //or echo "You not allowed to view this page <a href=\"login.php\">Please login</a>";
+        //header("location:login.html"); // take them to page
+     echo "You not allowed to view this page <a href=\"login.html\">Please login</a>";
 
     endif;
 ?>
