@@ -16,7 +16,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
    $sql = "SELECT id FROM users WHERE username = '$myusername' and passcode = '$mypassword'";
    $result = mysqli_query($link,$sql);
    if (!$result) {
-       printf("Error: %s\n", mysqli_error($con));
+       printf("Error: %s\n", mysqli_error($link));
        exit();
    }
    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
