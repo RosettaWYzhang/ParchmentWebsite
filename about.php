@@ -1,3 +1,7 @@
+<?php
+// Initialize the session
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,10 +43,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="services.html">Services</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="documentation.html">Documentation</a>
+              <a class="nav-link" href="services.php">Services</a>
             </li>
             <li class="nav-item">
               <?php
@@ -57,19 +58,6 @@
         </div>
       </div>
     </nav>
-
-    <!-- Header with Background Image -->
-    <!--
-    <header class="business-header">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <h1 class="display-3 text-center text-white mt-4">Business Name or Tagline</h1>
-          </div>
-        </div>
-      </div>
-    </header>
-  -->
 
     <!-- Page Content -->
     <div class="container">

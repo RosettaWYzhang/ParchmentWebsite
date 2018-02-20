@@ -1,3 +1,8 @@
+<?php
+// Initialize the session
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,10 +46,13 @@
               <a class="nav-link" href="services.php">Services</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="documentation.html">Documentation</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="login.html">Login</a>
+              <?php
+              if(isset($_SESSION['username'])){
+                <a class="nav-link" href="logout.php">Logout</a>
+              }else{
+                <a class="nav-link" href="login.html">Login</a>
+              }
+              ?>
             </li>
           </ul>
         </div>
@@ -52,31 +60,6 @@
     </nav>
 
     <!-- Page Content -->
-    <div class="container">
-
-      <div id="id01" class="modal">
-        <form class="modal-content animate" action="action_page.php" method = "post">
-          <div class="container">
-            <label><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="username" required>
-
-            <label><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="password" required>
-
-            <button type="submit">Login</button>
-            <label>
-              <input type="checkbox" checked="checked"> Remember me
-            </label>
-          </div>
-
-          <div class="container" style="background-color:#f1f1f1">
-            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-            <span class="psw">Forgot <a href="#">password?</a></span>
-          </div>
-        </form>
-      </div>
-
-
       <div class="row">
         <div class="col-sm-8">
           <h2 class="mt-4">Parchment Project</h2>

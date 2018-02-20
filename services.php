@@ -56,7 +56,13 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
               <a class="nav-link" href="documentation.html">Documentation</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="login.html">Login</a>
+              <?php
+              if(isset($_SESSION['username'])){
+                <a class="nav-link" href="logout.php">Logout</a>
+              }else{
+                <a class="nav-link" href="login.html">Login</a>
+              }
+              ?>
             </li>
             </li>
           </ul>
