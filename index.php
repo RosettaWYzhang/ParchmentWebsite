@@ -47,18 +47,15 @@
               <a class="nav-link" href="services.php">Services</a>
             </li>
             <li class="nav-item">
-              <?php/*
+              <!--
               if(isset($_SESSION['username'])){
                 <a class="nav-link" href="logout.php">Logout</a>
               }else{
                 <a class="nav-link" href="login.html">Login</a>
               }
-              */?>
-              <?php if (isset($_SESSION['username']) && !empty($_SESSION['username']): ?>
-                <a class="nav-link" href="logout.php">Logout</a>
-              <?php else: ?>
-                <a class="nav-link" href="login.html">Login</a>
-              <?php endif; ?>
+              */-->
+              <a class="nav-link" href="login.html">Login</a>
+
             </li>
           </ul>
         </div>
