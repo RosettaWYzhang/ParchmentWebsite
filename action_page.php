@@ -27,6 +27,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
        session_start();
        $_SESSION['username'] = $myusername;
        header("location: services.php");
+       exit();
    }else {
       $error = "Your Login Name or Password is invalid";
       echo "login not successful";
