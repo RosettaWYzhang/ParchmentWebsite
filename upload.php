@@ -11,11 +11,12 @@ echo "$total";
 // Unique id for the process request
 $id = uniqid (rand(), true);
 // $target_dir = "uploads/" . $uniqid . "/";
-$target_dir = "uploads/";
+$target_dir = "uploads/" . $id . "/";
 echo "targetdir ";
-echo $id;
+echo $target_dir;
 if( is_dir($target_dir) === false ) // Should always be false, as it is a unique id
 {
+    echo "    Creating dir   ";
     mkdir($target_dir);
 }
 
