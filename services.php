@@ -1,5 +1,12 @@
 <?php
-if(isset( $_SESSION['username']) && !empty($_SESSION['username'])):
+// Initialize the session
+session_start();
+
+// If session variable is not set it will redirect to login page
+if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
+  header("location: login.php");
+  exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -108,15 +115,3 @@ if(isset( $_SESSION['username']) && !empty($_SESSION['username'])):
   </body>
 
 </html>
-
-<?php
-
-    else:
-        //header("location:login.html"); // take them to page
-     echo "hello";
-     print_r($_SESSION);
-     echo $_SESSION['username'];
-     echo "You not allowed to view this page <a href=\"login.html\">Please login</a>";
-
-    endif;
-?>
