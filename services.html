@@ -1,3 +1,22 @@
+<?php
+
+
+if(isset( $_SESSION['SESS_MEMBER_ID']) && !empty($_SESSION['SESS_MEMBER_ID'])):?>
+
+    Do your html and other code
+
+<?php
+
+    else:
+
+        header("location:page.php"); // take them to page
+
+     //or echo "You not allowed to view this page <a href=\"login.php\">Please login</a>";
+
+    endif;
+?> 
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,18 +72,6 @@
       </div>
     </nav>
 
-    <!-- Header with Background Image -->
-<!--
-    <header class="business-header">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <h1 class="display-3 text-center text-white mt-4">Business Name or Tagline</h1>
-          </div>
-        </div>
-      </div>
-    </header>
--->
     <!-- Page Content -->
     <div class="container">
 
