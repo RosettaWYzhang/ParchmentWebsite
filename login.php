@@ -51,13 +51,11 @@ session_start();
             <li class="nav-item">
               <?php
               if(isset($_SESSION['username'])){
-                <a class="nav-link" href="logout.php">Login</a>
+                <a class="nav-link" href="logout.php">Logout</a>
               }else{
                 <a class="nav-link" href="login.html">Login</a>
               }
               ?>
-
-              <!--onclick="document.getElementById('id01').style.display='block'" style="width:auto;" -->
             </li>
           </ul>
         </div>
