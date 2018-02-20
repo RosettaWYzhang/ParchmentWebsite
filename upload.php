@@ -74,9 +74,7 @@ if($successFile < 20){
     echo "Sorry, you need at least 20 succesful images";
 }
 else{
-    shell_exec('mkdir sergioTest');
-    shell_exec('docker attach parchmentcontainer');
-    shell_exec('cd /services');
+    shell_exec('sh requestDocker.sh');
 }
 
 }
