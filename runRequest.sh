@@ -1,2 +1,2 @@
-docker attach parchmentcontainer;
+docker exec parchmentcontainer
 cd /services
