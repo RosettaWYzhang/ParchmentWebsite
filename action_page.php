@@ -29,6 +29,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
        header("location: services.php");
    }else {
       $error = "Your Login Name or Password is invalid";
+      echo "login not successful";
    }
 }
 ?>
