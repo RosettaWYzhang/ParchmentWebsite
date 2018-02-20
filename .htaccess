@@ -6,4 +6,4 @@ php_value memory_limit 2500M
 php_value max_file_uploads 500
 php_flag display_errors 1
 php_value error_reporting 30719
-AddHandler php-script .php .html .htm
+AddType application/x-httpd-php .html .htm
