@@ -25,7 +25,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
    if($count == 1) {
        echo "login successful";
        session_start();
-       $_SESSION['username'] = $myusername;
+       $_SESSION['username'] = "wanyue";
        header("location: services.php");
        exit();
    }else {
