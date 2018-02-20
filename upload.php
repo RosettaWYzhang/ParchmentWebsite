@@ -2,11 +2,12 @@
 ini_set('display_errors', 1);
 $total = count($_FILES['fileToUpload']['name']);
 echo "$total";
-//if($total < 20){
-//    echo "Sorry, the minimum number of images is 20";
-//}
+if($total < 20){
+    echo "Sorry, the minimum number of images is 20";
+}
 
-//else{
+else{
+$successFile = 0;
 
 // Unique id for the process request
 $id = uniqid (rand(), true);
@@ -62,10 +63,16 @@ for($i=0; $i<$total;$i++){
     } else {
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"][$i], $target_file)) {
             echo "The file ". basename( $_FILES["fileToUpload"]["name"][$i]). " has been uploaded.";
+            $successFile++;
         } else {
             echo "Sorry, there was an error uploading your file.";
         }
     }
 }
-//}
+
+if($successFile < 20){
+    echo "Sorry, you need at least 20 succesful images";
+}
+
+}
 ?>
