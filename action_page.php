@@ -20,7 +20,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
        exit();
    }
    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-   $active = $row['active'];
+   //$active = $row['active'];
 
    $count = mysqli_num_rows($result);
 
