@@ -73,6 +73,10 @@ for($i=0; $i<$total;$i++){
 if($successFile < 20){
     echo "Sorry, you need at least 20 succesful images";
 }
+else{
+    shell_exec('docker attach parchmentcontainer');
+    shell_exec('cd /services');
+}
 
 }
 ?>
