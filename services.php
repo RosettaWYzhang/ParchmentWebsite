@@ -43,11 +43,14 @@ if(isset( $_SESSION['username']) && !empty($_SESSION['username'])):?>
               <a class="nav-link" href="about.html">About</a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="services.html">Services
+              <a class="nav-link" href="services.php">Services
               <span class="sr-only">(current)</span>
             </a>
             <li class="nav-item">
               <a class="nav-link" href="documentation.html">Documentation</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login.html">Login</a>
             </li>
             </li>
           </ul>
