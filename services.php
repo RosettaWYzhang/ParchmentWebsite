@@ -1,21 +1,7 @@
 <?php
 
 
-if(isset( $_SESSION['SESS_MEMBER_ID']) && !empty($_SESSION['SESS_MEMBER_ID'])):?>
-
-    Do your html and other code
-
-<?php
-
-    else:
-
-        header("location:page.php"); // take them to page
-
-     //or echo "You not allowed to view this page <a href=\"login.php\">Please login</a>";
-
-    endif;
-?> 
-
+if(isset( $_SESSION['username']) && !empty($_SESSION['username'])):?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -64,9 +50,6 @@ if(isset( $_SESSION['SESS_MEMBER_ID']) && !empty($_SESSION['SESS_MEMBER_ID'])):?
               <a class="nav-link" href="documentation.html">Documentation</a>
             </li>
             </li>
-            <!--<li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
-            </li>-->
           </ul>
         </div>
       </div>
@@ -99,54 +82,11 @@ if(isset( $_SESSION['SESS_MEMBER_ID']) && !empty($_SESSION['SESS_MEMBER_ID'])):?
       <div class="row">
         <div class="col-sm-12">
           <h2 class="mt-4">Download flattened parchment</h2>
-          <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A deserunt neque tempore recusandae animi soluta quasi? Asperiores rem dolore eaque vel, porro, soluta unde debitis aliquam laboriosam. Repellat explicabo, maiores!</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis optio neque consectetur consequatur magni in nisi, natus beatae quidem quam odit commodi ducimus totam eum, alias, adipisci nesciunt voluptate. Voluptatum.</p>-->
           <p>
             <a class="btn btn-primary btn-lg" href="#">Download &raquo;</a>
           </p>
         </div>
       </div>
-      <!--
-      <div class="row">
-        <div class="col-sm-4 my-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Find Out More!</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-4 my-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus totam ut praesentium aut.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Find Out More!</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-4 my-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Find Out More!</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    -->
       <!-- /.row -->
     </div>
     <!-- /.container -->
@@ -166,3 +106,13 @@ if(isset( $_SESSION['SESS_MEMBER_ID']) && !empty($_SESSION['SESS_MEMBER_ID'])):?
   </body>
 
 </html>
+
+<?php
+
+    else:
+
+        header("location:login.php"); // take them to page
+     //or echo "You not allowed to view this page <a href=\"login.php\">Please login</a>";
+
+    endif;
+?>
