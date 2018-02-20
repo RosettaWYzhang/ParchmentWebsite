@@ -1,7 +1,3 @@
-
-
-
-
 <?php
 ini_set('display_errors', 1);
 include("config.php");
@@ -28,8 +24,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
    if($count == 1) {
       //session_register("myusername");
+      echo "logged in successfullt";
       $_SESSION['login_user'] = $myusername;
-
       header("location: welcome.php");
    }else {
       $error = "Your Login Name or Password is invalid";
