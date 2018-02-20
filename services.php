@@ -1,7 +1,6 @@
 <?php
-
-
-if(isset( $_SESSION['username']) && !empty($_SESSION['username'])):?>
+if(isset( $_SESSION['username']) && !empty($_SESSION['username'])):
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -114,6 +113,7 @@ if(isset( $_SESSION['username']) && !empty($_SESSION['username'])):?>
 
     else:
         //header("location:login.html"); // take them to page
+     echo "hello";
      echo $_SESSION['username'];
      echo "You not allowed to view this page <a href=\"login.html\">Please login</a>";
 
