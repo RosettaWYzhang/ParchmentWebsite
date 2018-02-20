@@ -70,49 +70,7 @@ session_start();
           <p>The Weyrich algorithm has 3 major components: the polygon mesh generator, the texture generator and the parchment flattener. As the first component of the pipeline, the polygon mesh generator takes images of the same piece of parchment at different angles as the input and generates a polygon mesh (a 3D model represented by a lattice of triangles). The texture generator then produces a texture file using the polygon mesh, which contains the information of colors and surface details of the 3D model. In the final step, the parchment flattener uses both the polygon mesh and the texture file to generate a flattened piece of parchment with readable text.</p>
           <p>For more details of the algorithm, please go to the <a href="http://reality.cs.ucl.ac.uk/projects/gpb/index.html">Great Parchment Book project website</a> by the Digital Reality Group.</p>
         </div>
-
       </div>
-      <!--
-      <div class="row">
-        <div class="col-sm-4 my-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Find Out More!</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-4 my-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus totam ut praesentium aut.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Find Out More!</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-4 my-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Find Out More!</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    -->
       <!-- /.row -->
     </div>
     <!-- /.container -->
