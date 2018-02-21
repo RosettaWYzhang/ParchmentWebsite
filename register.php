@@ -154,6 +154,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     <!-- Page Content -->
     <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
         <div class="wrapper">
             <h2>Sign Up</h2>
             <p>Please fill this form to create an account.</p>
@@ -179,6 +181,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 </div>
                 <p>Already have an account? <a href="login.html">Login here</a>.</p>
             </form>
+        </div>
+        </div>
         </div>
     </div>
     <!-- /.container -->
