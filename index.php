@@ -7,22 +7,22 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <title>3D Reconstruction of fire-damaged parchment</title>
+  <title>3D Reconstruction of fire-damaged parchment</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="css/business-frontpage.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-  </head>
+  <!-- Custom styles for this template -->
+  <link href="css/business-frontpage.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
 
   <body>
 
@@ -47,13 +47,6 @@
               <a class="nav-link" href="services.php">Services</a>
             </li>
             <li class="nav-item">
-              <!--
-              if(isset($_SESSION['username'])){
-                <a class="nav-link" href="logout.php">Logout</a>
-              }else{
-                <a class="nav-link" href="login.html">Login</a>
-              }
-              */-->
               <?php
               if(isset($_SESSION['username'])) {
                 echo '<a class="nav-link" href="logout.php">Logout</a>';
@@ -61,7 +54,6 @@
                 echo '<a class="nav-link" href="login.html">Login</a>';
               }
               ?>
-
             </li>
           </ul>
         </div>
@@ -69,6 +61,8 @@
     </nav>
 
     <!-- Page Content -->
+    <!-- Page Content -->
+    <div class="container">
       <div class="row">
         <div class="col-sm-8">
           <h2 class="mt-4">Parchment Project</h2>
