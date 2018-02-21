@@ -54,7 +54,13 @@
                 <a class="nav-link" href="login.html">Login</a>
               }
               */-->
-              <a class="nav-link" href="login.html">Login</a>
+              <?php
+              if(isset($_SESSION['username'])) {
+                echo '<a class="nav-link" href="logout.php">Logout</a>';
+              } else {
+                echo '<a class="nav-link" href="login.html">Login</a>';
+              }
+              ?>
 
             </li>
           </ul>
