@@ -30,6 +30,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
    }else {
       $error = "Your Login Name or Password is invalid";
       echo "login not successful";
+      echo "count is ".$count;
    }
 }
 ?>
