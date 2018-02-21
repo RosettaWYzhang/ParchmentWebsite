@@ -1,10 +1,10 @@
 <?php
 // Initialize the session
+ini_set('display_errors', 1);
 session_start();
-
 // If session variable is not set it will redirect to login page
 if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
-  header("location: login.php");
+  header("location: login.html");
   exit;
 }
 ?>
@@ -13,7 +13,6 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
 <html lang="en">
 
   <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -42,21 +41,24 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Home
+              <a class="nav-link" href="index.php">Home
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="about.html">About</a>
+              <a class="nav-link" href="about.php">About</a>
             </li>
             <li class="nav-item active">
               <a class="nav-link" href="services.php">Services
               <span class="sr-only">(current)</span>
             </a>
             <li class="nav-item">
-              <a class="nav-link" href="documentation.html">Documentation</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="login.html">Login</a>
+              <?php
+              if(isset($_SESSION['username'])) {
+                echo '<a class="nav-link" href="logout.php">Logout</a>';
+              } else {
+                echo '<a class="nav-link" href="login.html">Login</a>';
+              }
+              ?>
             </li>
             </li>
           </ul>
