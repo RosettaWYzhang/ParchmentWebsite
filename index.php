@@ -71,6 +71,12 @@
           <p>
             <a class="btn btn-primary btn-lg" href="about.html">Read more &raquo;</a>
           </p>
+
+          <h2 class="mt-4">User Guide</h2>
+          <p>Upload the images of a piece of parchment from multiple viewpoints in png format. Wait a few hours for our server to process them and simply download the flattened parchment once it is ready!</p>
+            <a class="btn btn-primary btn-lg" href="services.php">Start flattening your parchment &raquo;</a>
+          </p>
+          
         </div>
         <div class="col-sm-4">
           <h2 class="mt-4">Contact Us</h2>
@@ -95,11 +101,8 @@
       </div>
       <!-- /.row -->
       <div class="row">
-        <div class="col-sm-12">
-          <h2 class="mt-4">User Guide</h2>
-          <p>Upload the images of a piece of parchment from multiple viewpoints in png format. Wait a few hours for our server to process them and simply download the flattened parchment once it is ready!</p>
-            <a class="btn btn-primary btn-lg" href="services.php">Start flattening your parchment &raquo;</a>
-          </p>
+        <div class="col-sm-8">
+
         </div>
       </div>
       <!-- /.row -->
