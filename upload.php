@@ -74,7 +74,14 @@ if($successFile < 20){
     echo "Sorry, you need at least 20 succesful images";
 }
 else{
-    shell_exec('sh requestDocker.sh');
+    shell_exec("docker exec -it parchmentcontainer touch config$id.txt");
+    shell_exec('echo \"IMAGE_DIR=/services/Parchment/bundler_sfm/Images/\n\"' . ">> config$id.txt");
+    shell_exec('echo \"LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/services/Parchment/bundler_sfm/bin\n\"' . ">> config$id.txt");
+    shell_exec('echo \"PATH=$PATH:/services/Parchment/bundler_sfm/bin\n\"' . ">> config$id.txt");
+    shell_exec('echo \"MATCH_WINDOW_RADIUS="\-1\"  # infinite window\n\"' . ">> config$id.txt");
+    shell_exec('echo \"FOCAL_WEIGHT=\"0.0001\"\nRAY_ANGLE_THRESHOLD=\"2.0\"\n\"' . ">> config$id.txt");
+    shell_exec('echo \"INIT_FOCAL=10000\n\"' . ">> config$id.txt");
+    shell_exec('docker exec -it parchmentcontainer (clear; rm Images/*; cp /home/Images/* Images; mogrify -resize 50% Images/*.jpg; export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/services/Parchment/bundler_sfm/bin; export PATH=$PATH:/services/Parchment/bundler_sfm/bin; ./RunBundler.sh config_file.txt) &');
 }
 
 }
