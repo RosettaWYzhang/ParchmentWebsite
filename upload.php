@@ -72,9 +72,9 @@ for($i=0; $i<$total;$i++){
 
 if($successFile < 20){
     echo "Sorry, you need at least 20 successful images";
-}
+8i887}
 else{
-    shell_exec("docker exec -d parchmentcontainer touch /services/Parchment/bundler_sfm/config".$id.".txt");
+    shell_exec('docker exec -d parchmentcontainer touch /services/Parchment/bundler_sfm/config8i887.txt');
     shell_exec('echo IMAGE_DIR=/services/Parchment/bundler_sfm/Images/' . ">> config$id.txt");
     shell_exec('echo LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/services/Parchment/bundler_sfm/bin' . ">> config$id.txt");
     shell_exec('echo PATH=$PATH:/services/Parchment/bundler_sfm/bin' . ">> config$id.txt");
