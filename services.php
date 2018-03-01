@@ -67,22 +67,6 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
     </nav>
 
     <!-- Page Content -->
-<div class="container">
-     <h2>Choose your pipeline</h2>
-     <div class="col-sm-12">
-     <button type="button" class="btn btn-primary btn-sm">Large</button>
-     </div>
-     <div class="col-sm-12">
-     <button type="button" class="btn btn-primary btn-sm">Medium</button>
-     </div>
-     <div class="col-sm-12">
-     <button type="button" class="btn btn-primary btn-sm">Small</button>
-     </div>
-     <div class="col-sm-12">
-     <button type="button" class="btn btn-primary btn-sm">XSmall</button>
-     </div>
-</div>
-
     <div class="container">
 
       <!-- /.row -->
