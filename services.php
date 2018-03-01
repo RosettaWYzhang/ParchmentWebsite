@@ -86,24 +86,82 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
     <div class="container">
 
       <!-- /.row -->
+      <div class="container">
       <div class="row">
         <div class="col-sm-12">
           <h2 class="mt-4">Upload images</h2>
           <form action="upload.php" method="post" enctype="multipart/form-data">
-            <span class="btn btn-default btn-lg btn-file">
-              <input onclick="enableInput()" type="file" name="fileToUpload[]" id="fileToUpload" multiple="multiple">
+            <!--<span class="btn btn-primary btn-sm btn-file">-->
+              <input class="btn btn-default btn-lg" onclick="enableInput()" type="file" name="fileToUpload[]" id="fileToUpload" multiple="multiple">
               <script>
               function enableInput() {
                 document.getElementById("submitButton").disabled = false;
               }
-            </script>
-            </span>
-            <span class="btn btn-default btn-lg btn-file">
-              <input type="submit" value="Upload Image" name="submit" id="submitButton" disabled>
+             </script>
+            <!--</span>-->
+            <span class="btn btn-default btn-sm btn-file">
+              <input class="btn btn-success btn-sm" type="submit" value="Upload Image" name="submit" id="submitButton" disabled>
             </span>
           </form>
         </div>
       </div>
+
+
+      <h2>Choose your pipeline</h2>
+      <div class="row">
+      <div class="col-sm-6">
+        <p>1. Due to uneven shrinkage, photos of fire-damaged parchments contain shadows which make the text illegible. Choose our Shadow Removal option for improved aethestic value and clarity. </p>
+      </div>
+      <div class="col-sm-4">
+      <button type="button" class="btn btn-success btn-sm" id="pipeline1" onclick="activateColor()">Shadow Removal</button>
+      </div>
+      </div>
+
+      <div class="row">
+      <div class="col-sm-6">
+        <p>2. Bundler is a structure-from-motion (SfM) system for unordered image collections. It takes  takes a set of images as input, and produces a 3D reconstruction of camera and sparse scene geometry as output. For more information, please visit <a href = "http://www.cs.cornell.edu/~snavely/bundler/">this site</a>. </p>
+      </div>
+      <div class="col-sm-4">
+      <button type="button" class="btn btn-success btn-sm">Bundler</button>
+      </div>
+      </div>
+
+      <div class ="row">
+        <div class="col-sm-6">
+          <p>3. PMVS is a multi-view stereo software that takes a set of images and camera parameters, then reconstructs 3D structure of an object or a scene visible in the images. For more information, please visit <a href = "https://www.di.ens.fr/pmvs/">this site</a>. </p>
+        </div>
+      <div class="col-sm-4">
+      <button type="button" class="btn btn-success btn-sm">PMVS</button>
+      </div>
+      </div>
+
+
+      <div class ="row">
+        <div class="col-sm-6">
+          <p>4. Input JPG files and get a dense point cloud.</p>
+        </div>
+      <div class="col-sm-4">
+      <button type="button" class="btn btn-success btn-sm">Bundler+PMVS</button>
+      </div>
+      </div>
+
+      <div class ="row">
+        <div class="col-sm-6">
+          <p>5. Future work.</p>
+        </div>
+      <div class="col-sm-6">
+      <button type="button" class="btn btn-info btn-sm">Bundler+PMVS+Poisson Reconstruction+Parchment Flattener</button>
+      </div>
+    </div>
+
+    <div class ="row">
+      <div class="col-sm-6">
+        <p>6. Future work.</p>
+      </div>
+      <div class="col-sm-6">
+      <button type="button" class="btn btn-info btn-sm">Bundler+PMVS+Shadow Removal+Poisson Reconstruction+Parchment Flattener</button>
+      </div>
+      <div>
 
       <!-- /.row -->
       <div class="row">
