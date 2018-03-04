@@ -1,5 +1,6 @@
 <?php
 ini_set('display_errors', 1);
+
 $total = count($_FILES['fileToUpload']['name']);
 echo "$total";
 if($total < 20){
@@ -75,15 +76,16 @@ if($successFile < 20){
 }
 
 else{
-    shell_exec('docker exec -it parchmentcontainer touch /services/Parchment/bundler_sfm/config8i887.txt');
-    shell_exec('echo IMAGE_DIR=/services/Parchment/bundler_sfm/Images/' . ">> config$id.txt");
-    shell_exec('echo LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/services/Parchment/bundler_sfm/bin' . ">> config$id.txt");
-    shell_exec('echo PATH=$PATH:/services/Parchment/bundler_sfm/bin' . ">> config$id.txt");
-    shell_exec('echo MATCH_WINDOW_RADIUS="\-1\"  # infinite window' . ">> config$id.txt");
-    shell_exec('echo FOCAL_WEIGHT=\"0.0001\"\nRAY_ANGLE_THRESHOLD=\"2.0\"' . ">> config$id.txt");
-    shell_exec('echo INIT_FOCAL=10000' . ">> config$id.txt");
-    shell_exec('docker exec -it parchmentcontainer (clear; rm Images/*; cp /home/Images/* Images; mogrify -resize 50% Images/*.jpg; export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/services/Parchment/bundler_sfm/bin; export PATH=$PATH:/services/Parchment/bundler_sfm/bin; ./RunBundler.sh config_file.txt) &');
+    shell_exec('echo IMAGE_DIR' . "=/var/www/uploads/$id/ >> /services/Parchment/bundler_sfm/config$id.txt");
+    shell_exec('echo LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/services/Parchment/bundler_sfm/bin' . ">> /services/Parchment/bundler_sfm/config$id.txt");
+    shell_exec('echo PATH=\$PATH:/services/Parchment/bundler_sfm/bin' . ">> /services/Parchment/bundler_sfm/config$id.txt");
+    shell_exec('echo MATCH_WINDOW_RADIUS="\-1\"  # infinite window' . ">> /services/Parchment/bundler_sfm/config$id.txt");
+    shell_exec('echo FOCAL_WEIGHT=\"0.0001\"' . ">> /services/Parchment/bundler_sfm/config$id.txt");
+    shell_exec('echo RAY_ANGLE_THRESHOLD=\"2.0\"' . ">> /services/Parchment/bundler_sfm/config$id.txt");
+    shell_exec('echo INIT_FOCAL=10000' . ">> /services/Parchment/bundler_sfm/config$id.txt");
+    shell_exec('export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/services/Parchment/bundler_sfm/bin; export PATH=\$PATH:/services/Parchment/bundler_sfm/bin; /services/Parchment/bundler_sfm/RunBundler.sh /services/Parchment/bundler_sfm/config9357396995a9c523f7d2140.41288579.txt');
 }
 
 }
 ?>
+
