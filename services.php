@@ -102,6 +102,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
         </script>
         <!-- reference: http://makitweb.com/make-photo-gallery-from-image-directory-with-php/ -->
         <h2>Image gallery of your uploaded images</h2>
+<div class="row">
         <div class="container">
         <div class="gallery">
           <?php
@@ -161,7 +162,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
           ?>
         </div>
       </div>
-
+</div>
 
 
       <h2>Choose your pipeline</h2>
