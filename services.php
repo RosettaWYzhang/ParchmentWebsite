@@ -27,6 +27,18 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
     <link href="css/business-frontpage.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
+
+    <!-- Script to load image gallery -->
+    <script type='text/javascript'>
+    $(document).ready(function(){
+
+      // Intialize gallery
+      var gallery = $('.gallery a').simpleLightbox();
+
+    });
+    </script>
+
+
   </head>
 
   <body>
@@ -89,17 +101,6 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
         </div>
       </div>
 
-
-
-        <!-- Script -->
-        <script type='text/javascript'>
-        $(document).ready(function(){
-
-          // Intialize gallery
-          var gallery = $('.gallery a').simpleLightbox();
-
-        });
-        </script>
         <!-- reference: http://makitweb.com/make-photo-gallery-from-image-directory-with-php/ -->
         <h2>Image gallery of your uploaded images</h2>
 <div class="row">
@@ -110,7 +111,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
           $image_extensions = array("png","jpg","jpeg","gif");
 
           // Target directory from upload.php
-          
+
           $dir = $_SESSION['target_dir'];
           if (is_dir($dir)){
 
@@ -249,6 +250,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
     <link href='node_modules/simplelightbox/dist/simplelightbox.min.css' rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script type="text/javascript" src="node_modules/simplelightbox/dist/simple-lightbox.js"></script>
+
 
   </body>
 
