@@ -30,11 +30,11 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
 
   <!-- Script to load image gallery -->
   <script type='text/javascript'>
-  $(document).ready(function(){
 
+  $(document).ready(function(){
+    console.log("before executing lightbox");
     // Intialize gallery
     var gallery = $('.gallery a').simpleLightbox();
-
   });
   </script>
 
