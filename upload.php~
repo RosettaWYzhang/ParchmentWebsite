@@ -82,14 +82,14 @@ if($successFile < 20){
 
 else{
     shell_exec('echo IMAGE_DIR' . "=/var/www/parchmentwebsite/uploads/$id/ >> /services/Parchment/bundler_sfm/config$id.txt");
-    shell_exec('echo LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/services/Parchment/bundler_sfm/bin ' . ">> /services/Parchment/bundler_sfm/config$id.txt");
-    shell_exec('echo PATH=\$PATH:/services/Parchment/bundler_sfm/bin ' . ">> /services/Parchment/bundler_sfm/config$id.txt");
-    shell_exec('echo MATCH_WINDOW_RADIUS=\"-1\" ' . ">> /services/Parchment/bundler_sfm/config$id.txt");
-    shell_exec('echo FOCAL_WEIGHT=\"0.0001\" ' . ">> /services/Parchment/bundler_sfm/config$id.txt");
-    shell_exec('echo RAY_ANGLE_THRESHOLD=\"2.0\" ' . ">> /services/Parchment/bundler_sfm/config$id.txt");
-    shell_exec('echo INIT_FOCAL=10000 ' . ">> /services/Parchment/bundler_sfm/config$id.txt");
+    shell_exec('echo LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/services/Parchment/bundler_sfm/bin' . ">> /services/Parchment/bundler_sfm/config$id.txt");
+    shell_exec('echo PATH=\$PATH:/services/Parchment/bundler_sfm/bin' . ">> /services/Parchment/bundler_sfm/config$id.txt");
+    shell_exec('echo MATCH_WINDOW_RADIUS="\-1\"  # infinite window' . ">> /services/Parchment/bundler_sfm/config$id.txt");
+    shell_exec('echo FOCAL_WEIGHT=\"0.0001\"' . ">> /services/Parchment/bundler_sfm/config$id.txt");
+    shell_exec('echo RAY_ANGLE_THRESHOLD=\"2.0\"' . ">> /services/Parchment/bundler_sfm/config$id.txt");
+    shell_exec('echo INIT_FOCAL=10000' . ">> /services/Parchment/bundler_sfm/config$id.txt");
     chdir('/services/Parchment/bundler_sfm/');
-    shell_exec('(mogrify -resize 50% /var/www/parchmentwebsite/uploads/' . $id . '/*.jpg; mogrify -resize 50% /var/www/parchmentwebsite/uploads/'. $id . '/*.png; export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/services/Parchment/bundler_sfm/bin; export PATH=\$PATH:/services/Parchment/bundler_sfm/bin; ./RunBundler.sh config' . $id . '.txt) &');
+    shell_exec('mogrify -resize 50% /var/www/parchmentwebsite/uploads/' . $id . '/*.jpg; mogrify -resize 50% /var/www/parchmentwebsite/uploads/'. $id . '/*.png; export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/services/Parchment/bundler_sfm/bin; export PATH=\$PATH:/services/Parchment/bundler_sfm/bin; ./RunBundler.sh config' . $id . '.txt');
 }
 
 }
