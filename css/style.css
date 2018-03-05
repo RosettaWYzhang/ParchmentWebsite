@@ -145,7 +145,7 @@ span.psw {
 }
 
 
-.container .gallery a img {
+.row .container .gallery a img {
   float: left;
   width: 20%;
   height: auto;
@@ -158,7 +158,7 @@ span.psw {
   position: relative;
 }
 
-.container .gallery a:hover img {
+.row .container .gallery a:hover img {
   -webkit-transform: scale(1.05);
   -moz-transform: scale(1.05);
   -o-transform: scale(1.05);
