@@ -27,6 +27,14 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
   <link href="css/business-frontpage.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
 
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JQuery for image gallery -->
+  <link href='node_modules/simplelightbox/dist/simplelightbox.min.css' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script type="text/javascript" src="node_modules/simplelightbox/dist/simple-lightbox.js"></script>
 
   <!-- Script to load image gallery -->
   <script type='text/javascript'>
@@ -242,14 +250,6 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
     <!-- /.container -->
   </footer>
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- JQuery for image gallery -->
-  <link href='node_modules/simplelightbox/dist/simplelightbox.min.css' rel='stylesheet' type='text/css'>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <script type="text/javascript" src="node_modules/simplelightbox/dist/simple-lightbox.js"></script>
 
 
 </body>
