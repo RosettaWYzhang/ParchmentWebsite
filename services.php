@@ -70,7 +70,6 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
     <div class="container">
 
       <!-- /.row -->
-      <div class="container">
       <div class="row">
         <div class="col-sm-12">
           <h2 class="mt-4">Upload images</h2>
@@ -89,6 +88,80 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
           </form>
         </div>
       </div>
+
+
+
+        <!-- Script -->
+        <script type='text/javascript'>
+        $(document).ready(function(){
+
+          // Intialize gallery
+          var gallery = $('.gallery a').simpleLightbox();
+
+        });
+        </script>
+        <!-- reference: http://makitweb.com/make-photo-gallery-from-image-directory-with-php/ -->
+        <h2>Image gallery of your uploaded images</h2>
+        <div class="row">
+        <div class="gallery">
+          <?php
+          // Image extensions
+          include 'upload.php';
+          $image_extensions = array("png","jpg","jpeg","gif");
+
+          // Target directory from upload.php
+          $dir = $target_dir;
+          if (is_dir($dir)){
+
+            if ($dh = opendir($dir)){
+              $count = 1;
+
+              // Read files
+              while (($file = readdir($dh)) !== false){
+
+                if($file != '' && $file != '.' && $file != '..'){
+
+                  // Thumbnail image path
+                  // $thumbnail_path = "images/thumbnail/".$file;
+
+                  // Image path
+                  $image_path = "images/".$file;
+
+                  //$thumbnail_ext = pathinfo($thumbnail_path, PATHINFO_EXTENSION);
+                  $image_ext = pathinfo($image_path, PATHINFO_EXTENSION);
+
+                  // Check its not folder and it is image file
+                  if(!is_dir($image_path) &&
+                  //in_array($thumbnail_ext,$image_extensions) &&
+                  in_array($image_ext,$image_extensions)){
+              ?>
+
+                    <!-- Image -->
+                    <a href="<?php echo $image_path; ?>">
+                      <img src="<?php echo $image_path; ?>" alt="" title=""/>
+                    </a>
+
+                    <?php
+
+                    // Break
+                    // display 4 images in one row
+                    if( $count%4 == 0){
+                      ?>
+                      <div class="clear"></div>
+                      <?php
+                    }
+                    $count++;
+                  }
+                }
+
+              }
+              closedir($dh);
+            }
+          }
+          ?>
+        </div>
+      </div>
+
 
 
       <h2>Choose your pipeline</h2>
@@ -145,7 +218,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
       <div class="col-sm-6">
       <button type="button" class="btn btn-info btn-sm">Bundler+PMVS+Shadow Removal+Poisson Reconstruction+Parchment Flattener</button>
       </div>
-      <div>
+    </div>
 
       <!-- /.row -->
       <div class="row">
@@ -156,9 +229,8 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
           </p>
         </div>
       </div>
-      <!-- /.row -->
-    </div>
     <!-- /.container -->
+  </div>
 
     <!-- Footer -->
     <footer class="py-3 bg-dark fixed-bottom">
@@ -171,6 +243,11 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JQuery for image gallery -->
+    <link href='simplelightbox-master/dist/simplelightbox.min.css' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="simplelightbox-master/dist/simple-lightbox.js"></script>
 
   </body>
 

@@ -19,7 +19,10 @@ echo $target_dir;
 if( is_dir($target_dir) === false ) // Should always be false, as it is a unique id
 {
     echo "    Creating dir   ";
-    mkdir($target_dir);
+    // give full permision
+    $oldmask = umask(0);
+    mkdir($target_dir, 0777);
+    umask($oldmask);
 }
 
 echo "before loop";
@@ -88,4 +91,3 @@ else{
 
 }
 ?>
-
