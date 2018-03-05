@@ -83,7 +83,8 @@ else{
     shell_exec('echo FOCAL_WEIGHT=\"0.0001\"' . ">> /services/Parchment/bundler_sfm/config$id.txt");
     shell_exec('echo RAY_ANGLE_THRESHOLD=\"2.0\"' . ">> /services/Parchment/bundler_sfm/config$id.txt");
     shell_exec('echo INIT_FOCAL=10000' . ">> /services/Parchment/bundler_sfm/config$id.txt");
-    shell_exec('export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/services/Parchment/bundler_sfm/bin; export PATH=\$PATH:/services/Parchment/bundler_sfm/bin; /services/Parchment/bundler_sfm/RunBundler.sh /services/Parchment/bundler_sfm/config9357396995a9c523f7d2140.41288579.txt');
+    chdir('/services/Parchment/bundler_sfm/');
+    shell_exec('(export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/services/Parchment/bundler_sfm/bin; export PATH=\$PATH:/services/Parchment/bundler_sfm/bin; ./RunBundler.sh /config' . $id . '.txt) &');
 }
 
 }
