@@ -1,5 +1,6 @@
 <?php
 ini_set('display_errors', 1);
+session_start();
 
 $total = count($_FILES['fileToUpload']['name']);
 echo "$total";
@@ -14,6 +15,7 @@ $successFile = 0;
 $id = uniqid (rand(), true);
 // $target_dir = "uploads/" . $uniqid . "/";
 $target_dir = "uploads/" . $id . "/";
+$_SESSION['target_dir'] = $target_dir;
 echo "targetdir ";
 echo $target_dir;
 if( is_dir($target_dir) === false ) // Should always be false, as it is a unique id

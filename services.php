@@ -102,15 +102,15 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
         </script>
         <!-- reference: http://makitweb.com/make-photo-gallery-from-image-directory-with-php/ -->
         <h2>Image gallery of your uploaded images</h2>
-        <div class="row">
+        <div class="container">
         <div class="gallery">
           <?php
           // Image extensions
-          include 'upload.php';
           $image_extensions = array("png","jpg","jpeg","gif");
 
           // Target directory from upload.php
-          $dir = $target_dir;
+          
+          $dir = $_SESSION['target_dir'];
           if (is_dir($dir)){
 
             if ($dh = opendir($dir)){
@@ -125,7 +125,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
                   // $thumbnail_path = "images/thumbnail/".$file;
 
                   // Image path
-                  $image_path = "images/".$file;
+                  $image_path = $dir.$file;
 
                   //$thumbnail_ext = pathinfo($thumbnail_path, PATHINFO_EXTENSION);
                   $image_ext = pathinfo($image_path, PATHINFO_EXTENSION);
@@ -138,7 +138,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
 
                     <!-- Image -->
                     <a href="<?php echo $image_path; ?>">
-                      <img src="<?php echo $image_path; ?>" alt="" title=""/>
+                      <img src="<?php echo $image_path; ?>" style="width:10%;height:10%" alt="" title=""/>
                     </a>
 
                     <?php
@@ -245,9 +245,9 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- JQuery for image gallery -->
-    <link href='simplelightbox-master/dist/simplelightbox.min.css' rel='stylesheet' type='text/css'>
+    <link href='node_modules/simplelightbox/dist/simplelightbox.min.css' rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script type="text/javascript" src="simplelightbox-master/dist/simple-lightbox.js"></script>
+    <script type="text/javascript" src="node_modules/simplelightbox/dist/simple-lightbox.js"></script>
 
   </body>
 
