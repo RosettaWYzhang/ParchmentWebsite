@@ -1,9 +1,11 @@
 <?php
 ini_set('display_errors', 1);
+session_start();
+
 $total = count($_FILES['fileToUpload']['name']);
 echo "$total";
-if($total < 20){
-    echo "Sorry, the minimum number of images is 20";
+if($total < 1){
+    echo "Sorry, the minimum number of images is 1";
 }
 
 else{
@@ -13,12 +15,16 @@ $successFile = 0;
 $id = uniqid (rand(), true);
 // $target_dir = "uploads/" . $uniqid . "/";
 $target_dir = "uploads/" . $id . "/";
+$_SESSION['target_dir'] = $target_dir;
 echo "targetdir ";
 echo $target_dir;
 if( is_dir($target_dir) === false ) // Should always be false, as it is a unique id
 {
     echo "    Creating dir   ";
-    mkdir($target_dir);
+    // give full permision
+    $oldmask = umask(0);
+    mkdir($target_dir, 0777);
+    umask($oldmask);
 }
 
 echo "before loop";
@@ -71,10 +77,20 @@ for($i=0; $i<$total;$i++){
 }
 
 if($successFile < 20){
-    echo "Sorry, you need at least 20 succesful images";
+   // shell_exec("sh trigger_bundler.sh $id"); 
+
+   // echo "Sorry, you need at least 20 successful images";
+    shell_exec("sh trigger_bundler.sh $id 2>&1 | tee -a /tmp/mylog 2>/dev/null >/dev/null &");
 }
+
 else{
-    shell_exec('sh requestDocker.sh');
+    $msg = "First line of text\nSecond line of text";
+    // use wordwrap() if lines are longer than 70 characters
+    $msg = wordwrap($msg,70);
+
+    // send email
+    mail("zceeher@ucl.ac.uk","My subject",$msg);
+    shell_exec("sh trigger_bundler.sh $id 2>&1 | tee -a /tmp/mylog 2>/dev/null >/dev/null &");
 }
 
 }
