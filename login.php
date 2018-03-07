@@ -80,14 +80,14 @@
             <label><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="password" required>
 
-            <button type="submit">Login</button>
+            <button class="loginbutton" type="submit">Login</button>
             <label>
               <input type="checkbox" checked="checked"> Remember me
             </label>
           </div>
 
           <div class="container" style="background-color:#f1f1f1">
-            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="loginbutton cancelbtn">Cancel</button>
             <span class="psw">Create <a href="register.php">new account</a></span>
           </div>
         </form>

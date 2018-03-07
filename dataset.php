@@ -172,7 +172,6 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
     </div>
 
 
-
     <h2>Choose your pipeline</h2>
     <div class="row">
       <div class="col-sm-6">

@@ -1,3 +1,4 @@
+
 <?php
 // Initialize the session
 ini_set('display_errors', 1);
@@ -98,82 +99,8 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
   <!-- Page Content -->
   <div class="container">
 
-    <!-- /.row -->
-    <div class="row">
-      <div class="col-sm-12">
-        <h2 class="mt-4">Upload images</h2>
-        <form action="upload.php" method="post" enctype="multipart/form-data">
-          <!--<span class="btn btn-primary btn-sm btn-file">-->
-          <input class="btn btn-default btn-lg" onclick="enableInput()" type="file" name="fileToUpload[]" id="fileToUpload" multiple="multiple">
-          <script>
-          function enableInput() {
-            document.getElementById("submitButton").disabled = false;
-          }
-          </script>
-          <!--</span>-->
-          <span class="btn btn-default btn-sm btn-file">
-            <input class="btn btn-success btn-sm" type="submit" value="Upload Image" name="submit" id="submitButton" disabled>
-          </span>
-        </form>
-      </div>
-    </div>
 
-    <!-- reference: http://makitweb.com/make-photo-gallery-from-image-directory-with-php/ -->
-    <h2>Image gallery of your uploaded images</h2>
-    <div class="row">
-      <div class="container">
-        <div class="gallery">
-          <?php
-          // Image extensions
-          $image_extensions = array("png","jpg","jpeg","gif");
-          // Target directory from upload.php
-          $dir = $_SESSION['target_dir'];
-          if (is_dir($dir)){
-            if ($dh = opendir($dir)){
-              $count = 1;
-              // Read files
-              while (($file = readdir($dh)) !== false){
-                if($file != '' && $file != '.' && $file != '..'){
-                  // Thumbnail image path
-                  // $thumbnail_path = "images/thumbnail/".$file;
-                  // Image path
-                  $image_path = $dir.$file;
-                  //$thumbnail_ext = pathinfo($thumbnail_path, PATHINFO_EXTENSION);
-                  $image_ext = pathinfo($image_path, PATHINFO_EXTENSION);
-                  // Check its not folder and it is image file
-                  if(!is_dir($image_path) &&
-                  //in_array($thumbnail_ext,$image_extensions) &&
-                  in_array($image_ext,$image_extensions)){
-                    ?>
-
-                    <!-- Image -->
-                    <a href="<?php echo $image_path; ?>">
-                      <img src="<?php echo $image_path; ?>" style="width:10%;height:10%" alt="" title=""/>
-                    </a>
-
-                    <?php
-                    // Break
-                    // display 4 images in one row
-                    if( $count%4 == 0){
-                      ?>
-                      <div class="clear"></div>
-                      <?php
-                    }
-                    $count++;
-                  }
-                }
-              }
-              closedir($dh);
-            }
-          }
-          ?>
-        </div>
-      </div>
-    </div>
-
-
-
-    <h2>Choose your pipeline</h2>
+   <h2>Choose your pipeline</h2>
     <div class="row">
       <div class="col-sm-6">
         <p>1. Due to uneven shrinkage, photos of fire-damaged parchments contain shadows which make the text illegible. Choose our Shadow Removal option for improved aethestic value and clarity. </p>
@@ -188,18 +115,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
         <p>2. Bundler is a structure-from-motion (SfM) system for unordered image collections. It takes  takes a set of images as input, and produces a 3D reconstruction of camera and sparse scene geometry as output. For more information, please visit <a href = "http://www.cs.cornell.edu/~snavely/bundler/">this site</a>. </p>
       </div>
       <div class="col-sm-4">
-        <button href="?run=true" type="button" class="btn btn-success btn-sm">Bundler</button>
-        <?php
-        if ($_GET['run']) {
-          # This code will run if ?run=true is set.
-          shell_exec("sh trigger_bundler.sh");
-        }
-        ?>
-
-<!--<form action="call_bundler.php" method="get">
-  <input type="submit" value="Bundler">
-</form>
--->
+        <button type="button" class="btn btn-success btn-sm">Bundler</button>
       </div>
     </div>
 
