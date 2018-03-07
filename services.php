@@ -79,11 +79,6 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
           </div>
         </li>
 
-        <li class="nav-item active">
-          <a class="nav-link" href="services.php">Services
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
 
         <li class="nav-item">
           <?php
@@ -211,6 +206,11 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
           shell_exec("sh trigger_bundler.sh");
         }
         ?>
+
+<!--<form action="call_bundler.php" method="get">
+  <input type="submit" value="Bundler">
+</form>
+-->
       </div>
     </div>
 
