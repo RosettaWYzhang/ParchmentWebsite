@@ -77,20 +77,20 @@ for($i=0; $i<$total;$i++){
 }
 
 if($successFile < 20){
-   // shell_exec("sh trigger_bundler.sh $id"); 
+   // shell_exec("sh trigger_bundler.sh $id");
 
    // echo "Sorry, you need at least 20 successful images";
-    shell_exec("sh trigger_bundler.sh $id 2>&1 | tee -a /tmp/mylog 2>/dev/null >/dev/null &");
+    //shell_exec("sh trigger_bundler.sh $id 2>&1 | tee -a /tmp/mylog 2>/dev/null >/dev/null &");
 }
 
 else{
-    $msg = "First line of text\nSecond line of text";
+    //$msg = "First line of text\nSecond line of text";
     // use wordwrap() if lines are longer than 70 characters
-    $msg = wordwrap($msg,70);
+    //$msg = wordwrap($msg,70);
 
     // send email
-    mail("zceeher@ucl.ac.uk","My subject",$msg);
-    shell_exec("sh trigger_bundler.sh $id 2>&1 | tee -a /tmp/mylog 2>/dev/null >/dev/null &");
+    //mail("zceeher@ucl.ac.uk","My subject",$msg);
+    //shell_exec("sh trigger_bundler.sh $id 2>&1 | tee -a /tmp/mylog 2>/dev/null >/dev/null &");
 }
 
 }
