@@ -156,7 +156,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <div class="container">
         <div class="row">
           <div class="col-sm-12">
-        <div class="wrapper">
+
             <h2 class="mt-4" style="margin-top:100px">Sign Up</h2>
             <p>Please fill this form to create an account.</p>
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
@@ -180,8 +180,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <input type="reset" class="btn btn-default" value="Reset">
                 </div>
                 <p>Already have an account? <a href="login.html">Login here</a>.</p>
+
             </form>
-        </div>
+
         </div>
         </div>
     </div>

@@ -1,4 +1,4 @@
-
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,7 +42,7 @@
               <a class="nav-link" href="services.php">Services</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="login.html">Login</a>
+              <a class="nav-link" href="login.php">Login</a>
             </li>
           </ul>
         </div>
@@ -53,10 +53,15 @@
     <div class="container">
 
       <div id="id01" class="modal" style="display:block" style="width:auto;">
+<?php
+   if (isset($_SESSION['errorMessage'])){
+     echo "<span style='color:red;'>Your email or password is not correct</span>";
+   }
+?>
         <form class="modal-content animate" action="action_page.php" method = "post">
           <div class="container">
-            <label><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="username" required>
+            <label><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="username" required>
 
             <label><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="password" required>
