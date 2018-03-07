@@ -235,8 +235,15 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
       <div class="col-sm-12">
         <h2 class="mt-4">Download flattened parchment</h2>
         <p>
+
           <a class="btn btn-primary btn-lg" href="#">Download &raquo;</a>
         </p>
+<button id="open_script">Download Bundle</a>
+<script>
+$('#open_script').click(function(){
+   window.location.assign('download.php');//there are many ways to do this
+});
+</script>
       </div>
     </div>
     <!-- /.container -->

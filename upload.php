@@ -4,8 +4,8 @@ session_start();
 
 $total = count($_FILES['fileToUpload']['name']);
 echo "$total";
-if($total < 20){
-    echo "Sorry, the minimum number of images is 20";
+if($total < 1){
+    echo "Sorry, the minimum number of images is 1";
 }
 
 else{
@@ -77,19 +77,20 @@ for($i=0; $i<$total;$i++){
 }
 
 if($successFile < 20){
-    echo "Sorry, you need at least 20 successful images";
+   // shell_exec("sh trigger_bundler.sh $id"); 
+
+   // echo "Sorry, you need at least 20 successful images";
+    shell_exec("sh trigger_bundler.sh $id 2>&1 | tee -a /tmp/mylog 2>/dev/null >/dev/null &");
 }
 
 else{
-    shell_exec('echo IMAGE_DIR' . "=/var/www/parchmentwebsite/uploads/$id/ >> /services/Parchment/bundler_sfm/config$id.txt");
-    shell_exec('echo LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/services/Parchment/bundler_sfm/bin ' . ">> /services/Parchment/bundler_sfm/config$id.txt");
-    shell_exec('echo PATH=\$PATH:/services/Parchment/bundler_sfm/bin ' . ">> /services/Parchment/bundler_sfm/config$id.txt");
-    shell_exec('echo MATCH_WINDOW_RADIUS=\"-1\" ' . ">> /services/Parchment/bundler_sfm/config$id.txt");
-    shell_exec('echo FOCAL_WEIGHT=\"0.0001\" ' . ">> /services/Parchment/bundler_sfm/config$id.txt");
-    shell_exec('echo RAY_ANGLE_THRESHOLD=\"2.0\" ' . ">> /services/Parchment/bundler_sfm/config$id.txt");
-    shell_exec('echo INIT_FOCAL=10000 ' . ">> /services/Parchment/bundler_sfm/config$id.txt");
-    chdir('/services/Parchment/bundler_sfm/');
-    shell_exec('(mogrify -resize 50% /var/www/parchmentwebsite/uploads/' . $id . '/*.jpg; mogrify -resize 50% /var/www/parchmentwebsite/uploads/'. $id . '/*.png; export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/services/Parchment/bundler_sfm/bin; export PATH=\$PATH:/services/Parchment/bundler_sfm/bin; ./RunBundler.sh config' . $id . '.txt) &');
+    $msg = "First line of text\nSecond line of text";
+    // use wordwrap() if lines are longer than 70 characters
+    $msg = wordwrap($msg,70);
+
+    // send email
+    mail("zceeher@ucl.ac.uk","My subject",$msg);
+    shell_exec("sh trigger_bundler.sh $id 2>&1 | tee -a /tmp/mylog 2>/dev/null >/dev/null &");
 }
 
 }
