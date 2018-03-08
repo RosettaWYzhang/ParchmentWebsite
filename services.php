@@ -73,8 +73,8 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
             <!--<a class="nav-link dropbtn" href="services.php">Services</a>-->
             <div class="dropdown-content">
               <a href="#">Upload dataset</a>
-              <a href="#">Choose pipeline</a>
-              <a href="#">Download result</a>
+              <a href="#pipeline">Choose pipeline</a>
+              <a href="#downloadResult">Download result</a>
             </div>
           </div>
         </li>
@@ -102,7 +102,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
     <!-- /.row -->
     <div class="row">
       <div class="col-sm-12">
-        <h2 class="mt-4">Upload images</h2>
+        <h2 id="dataset" class="mt-4">Upload images</h2>
         <form action="upload.php" method="post" enctype="multipart/form-data">
           <!--<span class="btn btn-primary btn-sm btn-file">-->
           <input class="btn btn-default btn-lg" onclick="enableInput()" type="file" name="fileToUpload[]" id="fileToUpload" multiple="multiple">
@@ -184,7 +184,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
     </div>
 
 
-    <h2>Choose your pipeline</h2>
+    <h2 id="pipeline" style="padding-top:100px">Choose your pipeline</h2>
     <div class="row">
       <div class="col-sm-6">
         <p>1. Due to uneven shrinkage, photos of fire-damaged parchments contain shadows which make the text illegible. Choose our Shadow Removal option for improved aethestic value and clarity. </p>
@@ -199,14 +199,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
         <p>2. Bundler is a structure-from-motion (SfM) system for unordered image collections. It takes  takes a set of images as input, and produces a 3D reconstruction of camera and sparse scene geometry as output. For more information, please visit <a href = "http://www.cs.cornell.edu/~snavely/bundler/">this site</a>. </p>
       </div>
       <div class="col-sm-4">
-        <button href="?run=true" type="button" class="btn btn-success btn-sm">Bundler</button>
-        <?php
-        if ($_GET['run']) {
-          # This code will run if ?run=true is set.
-          shell_exec("sh trigger_bundler.sh");
-        }
-        ?>
-
+        <button type="button" class="btn btn-success btn-sm">Bundler</button>
 <!--<form action="call_bundler.php" method="get">
   <input type="submit" value="Bundler">
 </form>
@@ -254,7 +247,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
     <!-- /.row -->
     <div class="row">
       <div class="col-sm-12">
-        <h2 class="mt-4">Download flattened parchment</h2>
+        <h2 class="mt-4" id="downloadResult">Download flattened parchment</h2>
         <button id="open_script">Download Bundle</a>
           <script>
           $('#open_script').click(function(){
