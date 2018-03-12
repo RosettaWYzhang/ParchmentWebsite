@@ -127,45 +127,51 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
           // Image extensions
           $image_extensions = array("png","jpg","jpeg","gif");
           // Target directory from upload.php
-          $dir = $_SESSION['target_dir'];
-          if (is_dir($dir)){
-            if ($dh = opendir($dir)){
-              $count = 1;
-              // Read files
-              while (($file = readdir($dh)) !== false){
-                if($file != '' && $file != '.' && $file != '..'){
-                  // Thumbnail image path
-                  // $thumbnail_path = "images/thumbnail/".$file;
-                  // Image path
-                  $image_path = $dir.$file;
-                  //$thumbnail_ext = pathinfo($thumbnail_path, PATHINFO_EXTENSION);
-                  $image_ext = pathinfo($image_path, PATHINFO_EXTENSION);
-                  // Check its not folder and it is image file
-                  if(!is_dir($image_path) &&
-                  //in_array($thumbnail_ext,$image_extensions) &&
-                  in_array($image_ext,$image_extensions)){
-                    ?>
-
-                    <!-- Image -->
-                    <a href="<?php echo $image_path; ?>">
-                      <img src="<?php echo $image_path; ?>" style="width:10%;height:10%" alt="" title=""/>
-                    </a>
-
-                    <?php
-                    // Break
-                    // display 4 images in one row
-                    if( $count%4 == 0){
+          $foldername = $_SESSION['username'];
+          $main_dir = "uploads/" . $foldername;
+          $directories = glob($main_dir . '/*' , GLOB_ONLYDIR);
+          foreach ($directories as &$dir) {
+            //$dir = $_SESSION['target_dir'];
+            if (is_dir($dir)){
+              if ($dh = opendir($dir)){
+                $count = 1;
+                // Read files
+                while (($file = readdir($dh)) !== false){
+                  if($file != '' && $file != '.' && $file != '..'){
+                    // Thumbnail image path
+                    // $thumbnail_path = "images/thumbnail/".$file;
+                    // Image path
+                    $image_path = $dir.$file;
+                    //$thumbnail_ext = pathinfo($thumbnail_path, PATHINFO_EXTENSION);
+                    $image_ext = pathinfo($image_path, PATHINFO_EXTENSION);
+                    // Check its not folder and it is image file
+                    if(!is_dir($image_path) &&
+                    //in_array($thumbnail_ext,$image_extensions) &&
+                    in_array($image_ext,$image_extensions)){
                       ?>
-                      <div class="clear"></div>
+
+                      <!-- Image -->
+                      <a href="<?php echo $image_path; ?>">
+                        <img src="<?php echo $image_path; ?>" style="width:10%;height:10%" alt="" title=""/>
+                      </a>
+
                       <?php
+                      // Break
+                      // display 4 images in one row
+                      if( $count%4 == 0){
+                        ?>
+                        <div class="clear"></div>
+                        <?php
+                      }
+                      $count++;
                     }
-                    $count++;
                   }
                 }
+                closedir($dh);
               }
-              closedir($dh);
             }
           }
+
           ?>
         </div>
       </div>
