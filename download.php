@@ -1,6 +1,5 @@
 <?php
-  chdir('/services/Parchment/bundler_sfm');
-  shell_exec('zip result.zip bundle');
+  shell_exec('zip result.zip /var/www/parchmentwebsite/output/bundle');
   shell_exec('mv result.zip /var/www/parchmentwebsite/output/');
  // shell_exec('cd /services/Parchment/bundler_sfm/bundle zip -r result.zip *');
   chdir('/var/www/parchmentwebsite/output');
