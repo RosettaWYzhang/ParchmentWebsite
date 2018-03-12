@@ -10,7 +10,7 @@ if($total < 1){
 
 else{
 $successFile = 0;
-$foldername = $_SESSION['username']
+$foldername = $_SESSION['username'];
 // Unique id for the process request
 $id = uniqid (rand(), true);
 // $target_dir = "uploads/" . $uniqid . "/";

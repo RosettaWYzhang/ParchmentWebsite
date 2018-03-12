@@ -132,6 +132,14 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
           $directories = glob($main_dir . '/*' , GLOB_ONLYDIR);
           foreach ($directories as &$dir) {
             //$dir = $_SESSION['target_dir'];
+           ?>
+
+                      <!-- Break between dataset -->
+           <hr>
+           <h3><?php echo $dir; ?></h3>
+           <hr>
+            <?php
+            $dir = $dir.'/';
             if (is_dir($dir)){
               if ($dh = opendir($dir)){
                 $count = 1;
@@ -170,6 +178,11 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
                 closedir($dh);
               }
             }
+           ?>
+
+                      <!-- Break between dataset -->
+           <hr>
+            <?php
           }
 
           ?>
