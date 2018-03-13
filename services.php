@@ -73,6 +73,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
             <div class="dropdown-content">
               <a href="#">Upload dataset</a>
               <a href="#pipeline">Choose pipeline</a>
+              <a href="#viewGallery">Image gallery</a>
               <a href="#downloadResult">Download result</a>
             </div>
           </div>
@@ -119,7 +120,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
     </div>
 
     <!-- reference: http://makitweb.com/make-photo-gallery-from-image-directory-with-php/ -->
-    <h2>Image gallery of your uploaded images</h2>
+    <h2 id="viewGallery">Image gallery of your uploaded images</h2>
     <div class="row">
       <div class="container">
         <div class="gallery">
@@ -130,14 +131,16 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
           $foldername = $_SESSION['username'];
           $main_dir = "uploads/" . $foldername;
           $directories = glob($main_dir . '/*' , GLOB_ONLYDIR);
+          $count = 0;
           foreach ($directories as &$dir) {
+            $count++;
             //$dir = $_SESSION['target_dir'];
            ?>
 
                       <!-- Break between dataset -->
-           <hr>
-           <h3><?php echo $dir; ?></h3>
-           <hr>
+           <br>
+           <h3><?php echo "dataset $count"; ?></h3>
+           <br>
             <?php
             $dir = $dir.'/';
             if (is_dir($dir)){
@@ -181,7 +184,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
            ?>
 
                       <!-- Break between dataset -->
-           <hr>
+           <br>
             <?php
           }
 
