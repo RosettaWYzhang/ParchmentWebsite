@@ -26,6 +26,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
   <!-- Custom styles for this template -->
   <link href="css/business-frontpage.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
+  <link href="css/dropzone.css" rel="stylesheet">
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -35,7 +36,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
   <link href='node_modules/simplelightbox/dist/simplelightbox.min.css' rel='stylesheet' type='text/css'>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script type="text/javascript" src="node_modules/simplelightbox/dist/simple-lightbox.js"></script>
-
+  <script src="js/dropzone.js"></script>
   <!-- Script to load image gallery -->
   <script type='text/javascript'>
   $(document).ready(function(){
@@ -103,18 +104,19 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
     <div class="row">
       <div class="col-sm-12">
         <h2 id="dataset" class="mt-4">Upload images</h2>
-        <form action="upload.php" method="post" enctype="multipart/form-data">
+        <form class="dropzone" id="my-awesome-dropzone" action="upload.php" method="post" enctype="multipart/form-data">
           <!--<span class="btn btn-primary btn-sm btn-file">-->
-          <input class="btn btn-default btn-lg" onclick="enableInput()" type="file" name="fileToUpload[]" id="fileToUpload" multiple="multiple">
+          <!--<input class="btn btn-default btn-lg" onclick="enableInput()" type="file" name="fileToUpload[]" id="fileToUpload" multiple="multiple">
           <script>
           function enableInput() {
             document.getElementById("submitButton").disabled = false;
           }
-          </script>
+        </script>-->
           <!--</span>-->
-          <span class="btn btn-default btn-sm btn-file">
+          <!--<span class="btn btn-default btn-sm btn-file">
             <input class="btn btn-success btn-sm" type="submit" value="Upload Image" name="submit" id="submitButton" disabled>
-          </span>
+          </span>-->
+          <!--<input type="file" name="fileToUpload[]" id="fileToUpload" multiple="multiple">-->
         </form>
       </div>
     </div>
