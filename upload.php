@@ -4,6 +4,7 @@ session_start();
 
 $total = count($_FILES['fileToUpload']['name']);
 echo "$total";
+
 if($total < 1){
     echo "Sorry, the minimum number of images is 1";
 }

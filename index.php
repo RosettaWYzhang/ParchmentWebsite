@@ -43,13 +43,7 @@
 
 
       <li class="nav-item">
-        <div class="dropdown">
           <a class="nav-link dropbtn" href="services.php">Services</a>
-          <div class="dropdown-content">
-            <a href="#">Upload dataset</a>
-            <a href="#">Choose pipeline</a>
-            <a href="#">Download result</a>
-          </div>
 
       </li>
 

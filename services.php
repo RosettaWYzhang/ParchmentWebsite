@@ -37,6 +37,17 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script type="text/javascript" src="node_modules/simplelightbox/dist/simple-lightbox.js"></script>
   <script src="js/dropzone.js"></script>
+  <!-- Script for dropbox configuration -->
+<script>
+Dropzone.options.myAwesomeDropzone = {
+  uploadMultiple :true,
+  parallelUploads: 100,
+  timeout: 180000
+};
+
+</script>
+
+
   <!-- Script to load image gallery -->
   <script type='text/javascript'>
   $(document).ready(function(){
@@ -104,25 +115,25 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
     <div class="row">
       <div class="col-sm-12">
         <h2 id="dataset" class="mt-4">Upload images</h2>
-        <form class="dropzone" id="my-awesome-dropzone" action="upload.php" method="post" enctype="multipart/form-data">
-          <!--<span class="btn btn-primary btn-sm btn-file">-->
-          <!--<input class="btn btn-default btn-lg" onclick="enableInput()" type="file" name="fileToUpload[]" id="fileToUpload" multiple="multiple">
+        <form class="dropzone" id="my-awesome-dropzone" action="upload.php" method ="post" enctype="multipart/form-data">
+      <!-- <span class="btn btn-primary btn-sm btn-file" -->
+        <input class="btn btn-default btn-lg" onclick="enableInput()" type="file" name="fileToUpload[]" id="fileToUpload" multiple="multiple">
           <script>
           function enableInput() {
             document.getElementById("submitButton").disabled = false;
           }
-        </script>-->
+        </script>
           <!--</span>-->
-          <!--<span class="btn btn-default btn-sm btn-file">
+          <span class="btn btn-default btn-sm btn-file">
             <input class="btn btn-success btn-sm" type="submit" value="Upload Image" name="submit" id="submitButton" disabled>
-          </span>-->
+          </span>
           <!--<input type="file" name="fileToUpload[]" id="fileToUpload" multiple="multiple">-->
         </form>
       </div>
     </div>
 
     <!-- reference: http://makitweb.com/make-photo-gallery-from-image-directory-with-php/ -->
-    <h2 id="viewGallery">Image gallery of your uploaded images</h2>
+    <h2 style="padding-top:100px" id="viewGallery">Image gallery of your uploaded images</h2>
     <div class="row">
       <div class="container">
         <div class="gallery">
@@ -244,7 +255,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
         <p>5. Future work.</p>
       </div>
       <div class="col-sm-6">
-        <button type="button" class="btn btn-info btn-sm">Bundler+PMVS+Poisson Reconstruction+Parchment Flattener</button>
+        <button type="button" class="btn btn-info btn-sm">Bundler+PMVS+Poisson Reconstruction+Parchment Texture</button>
       </div>
     </div>
 
@@ -253,7 +264,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
         <p>6. Future work.</p>
       </div>
       <div class="col-sm-6">
-        <button type="button" class="btn btn-info btn-sm">Bundler+PMVS+Shadow Removal+Poisson Reconstruction+Parchment Flattener</button>
+        <button type="button" class="btn btn-info btn-sm">Bundler+PMVS+Shadow Removal+Poisson Reconstruction+Parchment Texture</button>
       </div>
     </div>
 
