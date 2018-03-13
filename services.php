@@ -131,15 +131,15 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
           $foldername = $_SESSION['username'];
           $main_dir = "uploads/" . $foldername;
           $directories = glob($main_dir . '/*' , GLOB_ONLYDIR);
-          $count = 0;
+          $countSet = 0;
           foreach ($directories as &$dir) {
-            $count++;
+            $countSet++;
             //$dir = $_SESSION['target_dir'];
            ?>
 
                       <!-- Break between dataset -->
            <br>
-           <h3><?php echo "dataset $count"; ?></h3>
+           <h3><?php echo "dataset $countSet"; ?></h3>
            <br>
             <?php
             $dir = $dir.'/';
@@ -168,8 +168,8 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
 
                       <?php
                       // Break
-                      // display 4 images in one row
-                      if( $count%4 == 0){
+                      // display 8 images in one row
+                      if( $count%8 == 0){
                         ?>
                         <div class="clear"></div>
                         <?php
@@ -185,6 +185,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
 
                       <!-- Break between dataset -->
            <br>
+           <hr>
             <?php
           }
 

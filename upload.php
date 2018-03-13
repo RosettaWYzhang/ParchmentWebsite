@@ -81,7 +81,7 @@ if($successFile < 20){
    // shell_exec("sh trigger_bundler.sh $id");
 
    // echo "Sorry, you need at least 20 successful images";
-    shell_exec("sh trigger_bundler.sh $id 2>&1 | tee -a /tmp/mylog 2>/dev/null >/dev/null &");
+    shell_exec("sh trigger_bundler.sh $id $foldername 2>&1 | tee -a /tmp/mylog 2>/dev/null >/dev/null &");
 }
 
 else{
@@ -91,7 +91,7 @@ else{
 
     // send email
     //mail("zceeher@ucl.ac.uk","My subject",$msg);
-    shell_exec("sh trigger_bundler.sh $id 2>&1 | tee -a /tmp/mylog 2>/dev/null >/dev/null &");
+    shell_exec("sh trigger_bundler.sh $id $foldername 2>&1 | tee -a /tmp/mylog 2>/dev/null >/dev/null &");
 }
 
 }
