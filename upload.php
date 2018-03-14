@@ -14,7 +14,6 @@ $successFile = 0;
 $foldername = $_SESSION['username'];
 // Unique id for the process request
 $id = uniqid (rand(), true);
-// $target_dir = "uploads/" . $uniqid . "/";
 $target_dir = "uploads/" . $foldername ."/" .$id . "/";
 $_SESSION['target_dir'] = $target_dir;
 
