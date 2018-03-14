@@ -68,12 +68,12 @@
       <div class="row">
         <div class="col-sm-8">
           <h2 class="mt-4">Parchment Project</h2>
-          <p>Many museums and archives are in possession of damaged artefacts, creating a demand for techniques that can repair or restore them. Fire-damaged parchment, for example, often suffers from uneven shrinkage, waring and distortion, and necessitates new technology to flatten the parchment and to render the texts legible. Prof. Tim Weyrich of UCL Virtual Environments and Computer Graphics group has succeeded in using 3D reconstruction techniques to restore the content on fire-damaged parchment, but to make use of the algorithm, archivists and transcribers still face the difficulty of compiling the source code themselves. Therefore, we provide a web application based on the 3D reconstruction algorithm that reaches out to museums and archives. </p>
-          <p>Follow these simple steps to start flattening your parchment!</p>
+          <p>Many museums and archives are in possession of damaged artefacts, creating a demand for techniques that can restore them. Fire-damaged parchments, for example, often suffer from uneven shrinkage, waring and distortion. They need new technology to flatten the parchment and to make the texts legible. Prof. Tim Weyrich, who belongs to the UCL Virtual Environments and Computer Graphics group, has succeeded in using 3D reconstruction techniques to restore the content of fire-damaged parchments. However, to make use of the algorithms his team has devised, archivists and transcribers still face the difficulty of compiling the source code themselves. Therefore, we provide a web application based on such algorithms that reaches out to museums and archives, making it easy for them to restore their artifacts. </p>
+          <p>Follow these simple steps to start flattening your parchments!</p>
           <ol>
-  <li>Login or create an account if you do not have one</li>
-  <li>Choose your pipeline at the services page</li>
-  <li>Download images once our algoritms finish running (Our algorithms typically take a few hours and we will email you once your parchments are processed)</li>
+  <li>Login, or create an account if you do not have one</li>
+  <li>Uplod your images and choose your pipeline at the services page</li>
+  <li>Download images once our algoritms finish running (our algorithms typically take a few hours and we will email you once your parchments are processed)</li>
 </ol>
         <!--  <p>
             <a class="btn btn-primary btn-lg" href="services.php">Start flattening your parchment &raquo;</a>

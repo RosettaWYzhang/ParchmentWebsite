@@ -155,12 +155,14 @@ Dropzone.options.myAwesomeDropzone = {
           $countSet = 0;
           foreach ($directories as &$dir) {
             $countSet++;
+            $_SESSION['countSet'] = $countSet;
             //$dir = $_SESSION['target_dir'];
            ?>
 
                       <!-- Break between dataset -->
            <br>
-           <h3><?php echo "dataset $countSet"; ?></h3>
+           <input type="radio" id="<?php echo $_SESSION['countSet']; ?>" name="dataset-check" /input>
+           <h3><?php echo "Dataset $countSet"; ?></h3>
            <br>
             <?php
             $dir = $dir.'/';
@@ -219,86 +221,88 @@ Dropzone.options.myAwesomeDropzone = {
 
 <hr>
 
+<script>
+if(document.getElementById('bundler_button').checked) {
+} else if(document.getElementById('pmvs_button').checked) {
+} else {
+  alert ("You must select a button");
+  return false;
+}
+</script>
+
 <div class="container">
   <div class="jumbotron">
 <div class="row" style="padding-bottom:50px">
   <div class="col-sm-12">
     <h2 id="pipeline" style="padding-top:50px" class="mt-4 text-center">Choose your pipeline</h2>
-    <div class="row">
-      <div class="col-sm-12">
-        <p style="padding-top:15px">1. Due to uneven shrinkage, photos of fire-damaged parchments contain shadows which make the text illegible. Choose our Shadow Removal option for improved aethestic value and clarity. </p>
-      </div>
     </div>
-    <div class="row">
-      <div class="col-sm-12 text-center">
-        <button type="button" class="btn btn-outline-success btn-lg" id="pipeline1" onclick="activateColor()">Shadow Removal</button>
-      </div>
-    </div>
+  </div>
 
     <div class="row">
       <div class="col-sm-12">
-        <p style="padding-top:15px">2. Bundler is a structure-from-motion (SfM) system for unordered image collections. It takes  takes a set of images as input, and produces a 3D reconstruction of camera and sparse scene geometry as output. For more information, please visit <a href = "http://www.cs.cornell.edu/~snavely/bundler/">this site</a>. </p>
+        <p style="padding-top:15px">Bundler is a structure-from-motion (SfM) system for unordered image collections. It takes  takes a set of images as input, and produces a 3D reconstruction of camera and sparse scene geometry as output. For more information, please visit <a href = "http://www.cs.cornell.edu/~snavely/bundler/">this site</a>. </p>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-12 text-center">
-        <button type="button" class="btn btn-outline-success btn-lg">Bundler</button>
+        <input type="radio" "id=bundler_button" name="btn-grp"> Bundler</input>
+        <!--<button type="button" id="bundler_button"  name=”testing” class="btn btn-outline-success btn-lg">Bundler</button>-->
+        <!--<script>
+        $("#bundler_button").click(function() {
+          $(this).toggleClass('btn btn-outline-success btn-lg btn btn-success btn-lg');
+        });
+      </script>-->
 <!--<form action="call_bundler.php" method="get">
   <input type="submit" value="Bundler">
 </form>
 -->
       </div>
     </div>
+    <hr>
 
 
     <div class ="row">
       <div class="col-sm-12">
-        <p style="padding-top:15px">3. PMVS is a multi-view stereo software that takes a set of images and camera parameters, then reconstructs 3D structure of an object or a scene visible in the images. For more information, please visit <a href = "https://www.di.ens.fr/pmvs/">this site</a>. </p>
-      </div>
-    </div>
-    <div class ="row">
-      <div class="col-sm-12 text-center">
-        <button type="button" class="btn btn-outline-success btn-lg">PMVS</button>
-      </div>
-    </div>
-
-
-    <div class ="row">
-      <div class="col-sm-12">
-        <p style="padding-top:15px">4. Input JPG files and get a dense point cloud.</p>
+        <p style="padding-top:15px">PMVS is a multi-view stereo software developed by Prof. Yasutaka Furukawa and Prof. Jean Ponce, from the University of Illinois at Urbana-Champaign. It takes a set of images and camera parameters, then reconstructs 3D structure of an object or a scene visible in the images. For more information, please visit <a href = "https://www.di.ens.fr/pmvs/">this site</a>. By choosing this pipeline you will get a dense point cloud.</p>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-12 text-center">
-        <button type="button" class="btn btn-outline-success btn-lg">Bundler+PMVS</button>
+        <input type="radio" id="pmvs_button" name="btn-grp"> Bundler+PMVS</input>
       </div>
     </div>
+    <hr>
 
     <div class ="row">
       <div class="col-sm-12">
-        <p style="padding-top:15px">5. Future work.</p>
+        <p style="padding-top:15px">Poisson reconstruction processes are able to ignore the noise present in the data to recreate a more accurate 3D representation of your artifacts. Parchment Texture is an algorithm developed by Prof. Tim Weyrich at UCL which will output texture and geometry mesh files.</p>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-12 text-center">
-        <button type="button" class="btn btn-outline-success btn-lg">Bundler+PMVS+Poisson Reconstruction+Parchment Texture</button>
+        <input type="radio" id="poisson_button" name="btn-grp"> Bundler+PMVS+Poisson Reconstruction+Parchment Texture</radio>
       </div>
     </div>
+    <hr>
 
     <div class ="row">
       <div class="col-sm-12">
-        <p style="padding-top:15px">6. Future work.</p>
+        <p style="padding-top:15px">Due to uneven shrinkage, photos of fire-damaged parchments will be very likely to contain shadows, making the text hardly legible. Choose our Shadow Removal option for improved aethestic value and clarity. This shadow removal algorithm was developed by Prof. Tim Weyrich at UCL.</p>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-12 text-center">
-        <button type="button" class="btn btn-outline-success btn-lg">Bundler+PMVS+Shadow Removal+Poisson Reconstruction+Parchment Texture</button>
+        <input type="radio" id="shadow_button" name="btn-grp"> Bundler+PMVS+Poisson Reconstruction+Shadow Removal+Parchment Texture</radio>
+        <script>
+        $("#shadow_button").click(function() {
+          $(this).toggleClass('btn btn-outline-success btn-lg btn btn-success btn-lg');
+        });
+        </script>
       </div>
     </div>
   </div>
-</div>
-</div>
-</div>
+
+
 <hr>
     <!-- /.row -->
     <div class="row" style="padding-bottom:50px">
