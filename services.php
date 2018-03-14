@@ -84,8 +84,8 @@ Dropzone.options.myAwesomeDropzone = {
             <!--<a class="nav-link dropbtn" href="services.php">Services</a>-->
             <div class="dropdown-content">
               <a href="#">Upload dataset</a>
-              <a href="#pipeline">Choose pipeline</a>
               <a href="#viewGallery">Image gallery</a>
+              <a href="#pipeline">Choose pipeline</a>
               <a href="#downloadResult">Download result</a>
             </div>
           </div>
@@ -141,7 +141,7 @@ Dropzone.options.myAwesomeDropzone = {
     <!-- reference: http://makitweb.com/make-photo-gallery-from-image-directory-with-php/ -->
     <div class="row" style="padding-bottom:50px" class="mt-4 text-center">
       <div class="col-sm-12">
-    <h2 style="padding-top:50px" id="viewGallery" class="mt-4 text-center">Image gallery of your uploaded images</h2>
+    <h2 style="padding-top:50px" id="viewGallery" class="mt-4 text-center">Image gallery</h2>
     <div class="row">
       <div class="container">
         <div class="gallery">
@@ -164,7 +164,7 @@ Dropzone.options.myAwesomeDropzone = {
            <input type="radio" id="<?php echo $_SESSION['countSet']; ?>" name="dataset-check" size="35"> <?php echo "Dataset $countSet"; ?> </input>
            <!--<h3><?php echo "Dataset $countSet"; ?></h3>-->
            <br>
-           <div class="container">
+           <div class="container" style="padding-bottom:10px">
             <?php
             $dir = $dir.'/';
             if (is_dir($dir)){
@@ -192,8 +192,8 @@ Dropzone.options.myAwesomeDropzone = {
 
                       <?php
                       // Break
-                      // display 8 images in one row
-                      if( $count%8 == 0){
+                      // display 10 images in one row
+                      if( $count%10 == 0){
                         ?>
                         <div class="clear"></div>
                         <?php
@@ -207,10 +207,8 @@ Dropzone.options.myAwesomeDropzone = {
             }
            ?>
          </div>
-
                       <!-- Break between dataset -->
-           <br>
-           <hr>
+<br><br>
             <?php
           }
           ?>
