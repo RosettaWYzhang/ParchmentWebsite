@@ -161,9 +161,10 @@ Dropzone.options.myAwesomeDropzone = {
 
                       <!-- Break between dataset -->
            <br>
-           <input type="radio" id="<?php echo $_SESSION['countSet']; ?>" name="dataset-check" /input>
-           <h3><?php echo "Dataset $countSet"; ?></h3>
+           <input type="radio" id="<?php echo $_SESSION['countSet']; ?>" name="dataset-check" size="35"> <?php echo "Dataset $countSet"; ?> </input>
+           <!--<h3><?php echo "Dataset $countSet"; ?></h3>-->
            <br>
+           <div class="container">
             <?php
             $dir = $dir.'/';
             if (is_dir($dir)){
@@ -205,13 +206,13 @@ Dropzone.options.myAwesomeDropzone = {
               }
             }
            ?>
+         </div>
 
                       <!-- Break between dataset -->
            <br>
            <hr>
             <?php
           }
-
           ?>
         </div>
       </div>
