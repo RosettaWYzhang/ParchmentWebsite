@@ -89,6 +89,7 @@ Dropzone.options.myAwesomeDropzone = {
               <a href="#">Upload dataset</a>
               <a href="#viewGallery">Image gallery</a>
               <a href="#pipeline">Choose pipeline</a>
+              <a href="#startService">Start the service</a>
               <a href="#downloadResult">Download result</a>
             </div>
           </div>
@@ -264,14 +265,6 @@ Dropzone.options.myAwesomeDropzone = {
     </div>
     <hr>
 
-<script>
-if(document.getElementById('bundler_button').checked) {
-} else if(document.getElementById('pmvs_button').checked) {
-} else {
-  alert ("You must select a button");
-}
-</script>
-
 
     <div class ="row">
       <div class="col-sm-12">
@@ -304,20 +297,40 @@ if(document.getElementById('bundler_button').checked) {
 
 
 <hr>
-    <!-- /.row -->
-    <div class="row" style="padding-bottom:50px">
-      <div class="col-sm-12">
-        <h2 style="padding-top:50px" class="mt-4 text-center" id="downloadResult">Download flattened parchment</h2>
-        <div class="mt-4 text-center">
-        <button class="btn btn-outline-success btn-lg" id="open_script">Download Bundle</a>
-          <script>
-          $('#open_script').click(function(){
-            window.location.assign('download.php');//there are many ways to do this
-          });
-        </script>
-      </div>
-    </div>
+
+<!-- /.row -->
+<div class="row" style="padding-bottom:50px">
+  <div class="col-sm-12">
+    <h2 id="startService" style="padding-top:50px" class="mt-4 text-center">Start the service</h2>
+    <p>After uploading datasets, selecting datasets and selecting pipelines, we are now able to process the images. Our pipeline runs for several hours and you will receive an email once it is done.
+      <div class="text-center">
+    <button type="button" class="btn btn-outline-success btn-lg" onclick="startService()">Start</button>
   </div>
+  </div>
+</div>
+</div>
+
+<!-- /.row -->
+<div class="container">
+  <div class="jumbotron">
+<div class="row" style="padding-bottom:50px">
+  <div class="col-sm-12">
+    <h2 style="padding-top:50px" class="mt-4 text-center" id="downloadResult">Download flattened parchment</h2>
+    <div class="mt-4 text-center">
+    <button class="btn btn-outline-success btn-lg" id="open_script">Download</a>
+      <script>
+      $('#open_script').click(function(){
+        window.location.assign('download.php');//there are many ways to do this
+      });
+    </script>
+  </div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+
+
     <!-- /.container -->
   </div>
 
