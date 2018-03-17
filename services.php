@@ -38,14 +38,17 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
   <script type="text/javascript" src="node_modules/simplelightbox/dist/simple-lightbox.js"></script>
   <script src="js/dropzone.js"></script>
   <!-- Script for dropbox configuration -->
-<script>
+
+<!--<script>
 Dropzone.options.myAwesomeDropzone = {
-  uploadMultiple :true,
-  parallelUploads: 100,
-  timeout: 180000
+ uploadMultiple :true, //problematic line, file not uploaded
+ // paramName: "file"
+ parallelUploads: 100
+ // timeout: 180000
+  //maxFilesize:100
 };
 
-</script>
+</script> -->
 
 
   <!-- Script to load image gallery -->
@@ -84,8 +87,9 @@ Dropzone.options.myAwesomeDropzone = {
             <!--<a class="nav-link dropbtn" href="services.php">Services</a>-->
             <div class="dropdown-content">
               <a href="#">Upload dataset</a>
-              <a href="#pipeline">Choose pipeline</a>
               <a href="#viewGallery">Image gallery</a>
+              <a href="#pipeline">Choose pipeline</a>
+              <a href="#startService">Start the service</a>
               <a href="#downloadResult">Download result</a>
             </div>
           </div>
@@ -111,28 +115,35 @@ Dropzone.options.myAwesomeDropzone = {
   <!-- Page Content -->
   <div class="container">
 
+
     <!-- /.row -->
       <div class="container" style="padding-top:50px">
         <div class="jumbotron">
     <div class="row" style="padding-bottom:50px">
       <div class="col-sm-12">
         <h2 id="dataset" style="padding-top:50px" class="mt-4 text-center">Upload images</h2>
-        <form class="dropzone" id="my-awesome-dropzone" action="upload.php" method ="post" enctype="multipart/form-data">
-      <!-- <span class="btn btn-primary btn-sm btn-file" -->
-        <input class="btn btn-default btn-lg" onclick="enableInput()" type="file" name="fileToUpload[]" id="fileToUpload" multiple="multiple">
-          <script>
-          function enableInput() {
-            document.getElementById("submitButton").disabled = false;
-          }
-        </script>
-          <!--</span>-->
-          <span class="btn btn-default btn-sm btn-file">
-            <input class="btn btn-outline-success btn-lg" type="submit" value="Upload Image" name="submit" id="submitButton" disabled>
-          </span>
-          <!--<input type="file" name="fileToUpload[]" id="fileToUpload" multiple="multiple">-->
-        </form>
+
+<form action="dropzoneUpload.php" class="dropzone">
+  <div class="fallback">
+    <input name="file" type="file" multiple />
+  </div>
+</form>
+
       </div>
     </div>
+<div class="row">
+    <div class="col-sm">
+      <form action="confirm.php" method="get">
+          <input type="submit" value="Confirm" class="btn btn-outline-success float-right" style="padding-right:10px">
+      </form>
+    </div>
+<div class="col-sm">
+<form action="cancel.php" method="get">
+  <input type="submit" value="Cancel" class="btn btn-outline-danger" style="padding-left:10px">
+</form>
+</div>
+</div>
+
   </div>
   </div>
 
@@ -141,7 +152,7 @@ Dropzone.options.myAwesomeDropzone = {
     <!-- reference: http://makitweb.com/make-photo-gallery-from-image-directory-with-php/ -->
     <div class="row" style="padding-bottom:50px" class="mt-4 text-center">
       <div class="col-sm-12">
-    <h2 style="padding-top:50px" id="viewGallery" class="mt-4 text-center">Image gallery of your uploaded images</h2>
+    <h2 style="padding-top:50px" id="viewGallery" class="mt-4 text-center">Image gallery</h2>
     <div class="row">
       <div class="container">
         <div class="gallery">
@@ -164,7 +175,7 @@ Dropzone.options.myAwesomeDropzone = {
            <input type="radio" id="<?php echo $_SESSION['countSet']; ?>" name="dataset-check" size="35"> <?php echo "Dataset $countSet"; ?> </input>
            <!--<h3><?php echo "Dataset $countSet"; ?></h3>-->
            <br>
-           <div class="container">
+           <div class="container" style="padding-bottom:10px">
             <?php
             $dir = $dir.'/';
             if (is_dir($dir)){
@@ -192,8 +203,8 @@ Dropzone.options.myAwesomeDropzone = {
 
                       <?php
                       // Break
-                      // display 8 images in one row
-                      if( $count%8 == 0){
+                      // display 10 images in one row
+                      if( $count%10 == 0){
                         ?>
                         <div class="clear"></div>
                         <?php
@@ -207,10 +218,8 @@ Dropzone.options.myAwesomeDropzone = {
             }
            ?>
          </div>
-
                       <!-- Break between dataset -->
-           <br>
-           <hr>
+<br><br>
             <?php
           }
           ?>
@@ -222,14 +231,6 @@ Dropzone.options.myAwesomeDropzone = {
 
 <hr>
 
-<script>
-if(document.getElementById('bundler_button').checked) {
-} else if(document.getElementById('pmvs_button').checked) {
-} else {
-  alert ("You must select a button");
-  return false;
-}
-</script>
 
 <div class="container">
   <div class="jumbotron">
@@ -247,16 +248,6 @@ if(document.getElementById('bundler_button').checked) {
     <div class="row">
       <div class="col-sm-12 text-center">
         <input type="radio" "id=bundler_button" name="btn-grp"> Bundler</input>
-        <!--<button type="button" id="bundler_button"  name=”testing” class="btn btn-outline-success btn-lg">Bundler</button>-->
-        <!--<script>
-        $("#bundler_button").click(function() {
-          $(this).toggleClass('btn btn-outline-success btn-lg btn btn-success btn-lg');
-        });
-      </script>-->
-<!--<form action="call_bundler.php" method="get">
-  <input type="submit" value="Bundler">
-</form>
--->
       </div>
     </div>
     <hr>
@@ -273,6 +264,7 @@ if(document.getElementById('bundler_button').checked) {
       </div>
     </div>
     <hr>
+
 
     <div class ="row">
       <div class="col-sm-12">
@@ -305,20 +297,40 @@ if(document.getElementById('bundler_button').checked) {
 
 
 <hr>
-    <!-- /.row -->
-    <div class="row" style="padding-bottom:50px">
-      <div class="col-sm-12">
-        <h2 style="padding-top:50px" class="mt-4 text-center" id="downloadResult">Download flattened parchment</h2>
-        <div class="mt-4 text-center">
-        <button class="btn btn-outline-success btn-lg" id="open_script">Download Bundle</a>
-          <script>
-          $('#open_script').click(function(){
-            window.location.assign('download.php');//there are many ways to do this
-          });
-        </script>
-      </div>
-    </div>
+
+<!-- /.row -->
+<div class="row" style="padding-bottom:50px">
+  <div class="col-sm-12">
+    <h2 id="startService" style="padding-top:50px" class="mt-4 text-center">Start the service</h2>
+    <p>After uploading datasets, selecting datasets and selecting pipelines, we are now able to process the images. Our pipeline runs for several hours and you will receive an email once it is done.
+      <div class="text-center">
+    <button type="button" class="btn btn-outline-success btn-lg" onclick="startService()">Start</button>
   </div>
+  </div>
+</div>
+</div>
+
+<!-- /.row -->
+<div class="container">
+  <div class="jumbotron">
+<div class="row" style="padding-bottom:50px">
+  <div class="col-sm-12">
+    <h2 style="padding-top:50px" class="mt-4 text-center" id="downloadResult">Download flattened parchment</h2>
+    <div class="mt-4 text-center">
+    <button class="btn btn-outline-success btn-lg" id="open_script">Download</a>
+      <script>
+      $('#open_script').click(function(){
+        window.location.assign('download.php');//there are many ways to do this
+      });
+    </script>
+  </div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+
+
     <!-- /.container -->
   </div>
 
