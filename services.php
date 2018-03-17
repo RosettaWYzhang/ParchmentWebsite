@@ -37,6 +37,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script type="text/javascript" src="node_modules/simplelightbox/dist/simple-lightbox.js"></script>
   <script src="js/dropzone.js"></script>
+  <script src="js/script.js"></script>
   <!-- Script for dropbox configuration -->
 
 <!--<script>

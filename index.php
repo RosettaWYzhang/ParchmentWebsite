@@ -72,7 +72,7 @@
           <p>Follow these simple steps to start flattening your parchments!</p>
           <ol>
   <li>Login, or create an account if you do not have one</li>
-  <li>Uplod your images and choose your pipeline at the services page</li>
+  <li>Upload your images and choose your pipeline at the services page</li>
   <li>Download images once our algoritms finish running (our algorithms typically take a few hours and we will email you once your parchments are processed)</li>
 </ol>
         <!--  <p>

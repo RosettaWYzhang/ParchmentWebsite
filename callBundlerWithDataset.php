@@ -2,9 +2,13 @@
 ini_set('display_errors', 1);
 session_start();
 
-$id = $_GET['id'];
-$datasetName = shell_exec("sh findSubDir.sh $id");
+$id = $_POST['id'];
 $username = $_SESSION['username'];
-shell_exec("sh trigger_bundler.sh $datasetName $username")
+chdir("uploads");
+chdir($username);
+$datasetName = shell_exec("bash /var/www/parchmentwebsite/findSubDir.sh $id 2>&1");
+chdir("/var/www/parchmentwebsite");
+shell_exec("echo \"print variable $username $datasetName\" >> debug.txt");
+shell_exec("./trigger_bundler_save_sergio.sh $username $datasetName");
 
 ?>

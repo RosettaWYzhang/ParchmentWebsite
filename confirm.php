@@ -5,7 +5,7 @@ $foldername = $_SESSION['username'];
 $id = uniqid (rand(), true);
 $target_user = "uploads/" . $foldername;
 $target_dir = "uploads/" . $foldername ."/" .$id;
-$fileNum=shell_exec("ls -1q *.jpg | wc -l");
+$fileNum=shell_exec("ls -1q $target_user/*.jpg | wc -l");
 if($fileNum==0){
   header('Location: services.php');
   exit;
