@@ -37,6 +37,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script type="text/javascript" src="node_modules/simplelightbox/dist/simple-lightbox.js"></script>
   <script src="js/dropzone.js"></script>
+  <script src="js/script.js"></script>
   <!-- Script for dropbox configuration -->
 
 <!--<script>
@@ -170,12 +171,19 @@ Dropzone.options.myAwesomeDropzone = {
             //$dir = $_SESSION['target_dir'];
            ?>
 
-                      <!-- Break between dataset -->
+           <!-- Break between dataset -->
            <br>
-           <input type="radio" id="<?php echo $_SESSION['countSet']; ?>" name="dataset-check" size="35"> <?php echo "Dataset $countSet"; ?> </input>
-           <!--<h3><?php echo "Dataset $countSet"; ?></h3>-->
+           <div class="row">
+           <div class="col-2">
+           <input type="radio" style="font-size:30px;" id="<?php echo $_SESSION['countSet']; ?>" name="dataset-check" size="35"> <?php echo "Dataset $countSet"; ?> </input>
+           </div><div class="col-1">
+           <form action="delete_dataset.php" method="post">
+           <input type="hidden" name="delete_dataset" value="<?php echo $_SESSION['countSet']; ?>" />
+           <input type="submit" value="Delete" class="btn btn-danger btn-sm" />
+           </form>
+           </div></div>
            <br>
-           <div class="container" style="padding-bottom:10px">
+           <div class="container" style="padding-bottom:40px">
             <?php
             $dir = $dir.'/';
             if (is_dir($dir)){

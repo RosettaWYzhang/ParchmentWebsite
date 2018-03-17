@@ -1,5 +1,7 @@
-count=-1
+#!/bin/bash
+count=0
 stop=$1
+#dir=uploads/$2
 for d in $(find * -maxdepth 0 -type d)
 do  ((count++))
     if [ $count -eq $stop ]
@@ -9,3 +11,5 @@ do  ((count++))
     #return $d
     fi
 done
+
+

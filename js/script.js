@@ -7,6 +7,7 @@ function startService(){
     var id = 0;
     for (id = 1; id <= datasetNum; id++) {
         if(document.getElementById(id).checked){
+            console.log("dataset" + id + " selected");
             break;
         }
     }
@@ -25,4 +26,4 @@ $.ajax({
 
 }
 
-}
+
