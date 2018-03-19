@@ -1,11 +1,16 @@
 <?php
-  shell_exec('zip result.zip /var/www/parchmentwebsite/output/bundle');
-  shell_exec('mv result.zip /var/www/parchmentwebsite/output/');
+  session_start();
+  $username = $_SESSION['username'];
+  chdir('/var/www/parchmentwebsite/downloads');
+  shell_exec("zip result.zip /var/www/parchmentwebsite/downloads/$username");
+ // shell_exec('mv result.zip /var/www/parchmentwebsite/downloads/');
+ // shell_exec('echo "result.zip is moved to downloads" >> debug.txt');
+
  // shell_exec('cd /services/Parchment/bundler_sfm/bundle zip -r result.zip *');
-  chdir('/var/www/parchmentwebsite/output');
+ // chdir('/var/www/parchmentwebsite/downloads');
 // set example variables
 $filename = "result.zip";
-$filepath = "output/";
+$filepath = "downloads/";
 
 // http headers for zip downloads
 header("Pragma: public");
