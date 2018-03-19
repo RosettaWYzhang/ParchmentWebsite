@@ -1,5 +1,6 @@
 <?php
 // Include config file
+session_start();
 ini_set('display_errors', 1);
 require_once 'config.php';
 
@@ -12,15 +13,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Check if username is empty
     if(empty(trim($_POST["username"]))){
-        $username_err = 'Please enter username.';
-    } else{
+        $_SESSION['errorMessage'] = 1;
+        $username_err = 'Please enter email.';
+
+    }
+    // Check if email is valid
+    else if (filter_var($username, FILTER_VALIDATE_EMAIL)) {
+      $username_err = 'Invalid email address.';  
+      $_SESSION['errorMessage'] = 1;
+      //echo "<script type='text/javascript'>alert('$username_err');</script>";
+    }
+    else{
         $username = trim($_POST["username"]);
     }
 
     // Check if password is empty
     if(empty(trim($_POST['password']))){
         $password_err = 'Please enter your password.';
-    } else{
+        $_SESSION['errorMessage'] = 1; 
+   } else{
         $password = trim($_POST['password']);
     }
 
