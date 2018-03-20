@@ -2,10 +2,18 @@
 ini_set('display_errors', 1);
 session_start();
 
+//default: user wants to upload images
+$request = 1;
+//request == 2 means that the user wants to delete the image
+if(isset($_POST['request'])){ 
+  $request = $_POST['request'];
+}
+
 $foldername = $_SESSION['username'];
 $target_dir = "uploads/" . $foldername ."/";
 $_SESSION['target_dir'] = $target_dir;
 
+if($request == 1){
 if( is_dir($target_dir) === false ) 
 {
     echo "    Creating dir   ";
@@ -28,5 +36,12 @@ if (!empty($_FILES))
      move_uploaded_file($tempFile,$mainFile);
 }
 
+}// end request == 1
+
+if($request == 2){
+ $filename = $target_dir.$_POST['name'];  
+ unlink($filename); 
+ exit;
+}
 ?>
 
