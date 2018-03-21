@@ -5,10 +5,10 @@
   session_start();
   $username = $_SESSION['username'];
   $datasetID = $_POST["datasetID"];
-  shell_exec("echo 'dataset ID entered by the user is :' >> debug.txt");
-  shell_exec("echo $datasetID >> debug.txt");
+ // shell_exec("echo 'dataset ID entered by the user is :' >> debug.txt");
+  //shell_exec("echo $datasetID >> debug.txt");
   //  chdir('/var/www/parchmentwebsite/downloads');
-  shell_exec("echo zip path is: >> debug.txt");
+  //shell_exec("echo zip path is: >> debug.txt");
   //error handling before zipping, check if dataset is found
   $datasetname = "/var/www/parchmentwebsite/downloads/$username/$datasetID";
 
@@ -16,13 +16,16 @@ if(file_exists($datasetname)){
   shell_exec("echo 'dataset found' >> debug.txt");
 }else{
   shell_exec("echo 'dataset not found ' >> debug.txt");
+  echo "<script type='text/javascript'>alert('The ID you entered does not match to any processed dataset.');</script>";
+ // sleep(5);
+  header('Location: services.php'); 
+  exit();
 }
 
   shell_exec("echo /var/www/parchmentwebsite/downloads/$username/$datasetID >> debug.txt");
- // shell_exec("tar -zcvf result.tgz /var/www/parchmentwebsite/downloads/$username/$datasetID");
- // shell_exec("zip result.zip downloads/$username/$datasetID");
   $zippingPath = "/var/www/parchmentwebsite/downloads/$username/";
   shell_exec("bash zip.sh $zippingPath $datasetID");
+
 //error handling for zipping
 /*$zipname = 'result.zip';
 if(file_exists($zipname)){

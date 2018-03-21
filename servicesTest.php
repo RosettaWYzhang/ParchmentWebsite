@@ -37,53 +37,18 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script type="text/javascript" src="node_modules/simplelightbox/dist/simple-lightbox.js"></script>
   <script src="js/dropzone.js"></script>
-  <script src="js/script.js"></script>
-  <!-- AngularJS -->
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script> 
-
   <!-- Script for dropbox configuration -->
 
-
-<script>
+<!--<script>
 Dropzone.options.myAwesomeDropzone = {
- //uploadMultiple :true, 
-// paramName: "file",
-// parallelUploads: 100,
- timeout: 180000,
- addRemoveLinks: true,
- removedfile: function(file) {
-    var name = file.name;
-    //alert(name);
-    //console.log("print file name to remove" +name);
-    $.ajax({
-        type: 'POST',
-        url: 'dropzoneUpload.php',
-        data: {name:name,request:2},
-        dataType: 'html'
-    });
-var _ref;
-return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;        
-              }
+ uploadMultiple :true, //problematic line, file not uploaded
+ // paramName: "file"
+ parallelUploads: 100
+ // timeout: 180000
+  //maxFilesize:100
 };
-/*$(".dropzone").dropzone({
- addRemoveLinks: true,
- removedfile: function(file) {
-  var name = file.name; 
-   
-  $.ajax({
-   type: 'POST',
-   url: 'dropzoneUpload.php',
-   data: {name: name,request: 2},
-   sucess: function(data){
-    console.log('success: ' + data);
-   }
-  });
-  var _ref;
-  return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
- }
-});
-*/
-</script>
+
+</script> -->
 
 
   <!-- Script to load image gallery -->
@@ -148,7 +113,7 @@ return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.p
   </nav>
 
   <!-- Page Content -->
-  <div class="container" ng-app="">
+  <div class="container">
 
 
     <!-- /.row -->
@@ -158,10 +123,10 @@ return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.p
       <div class="col-sm-12">
         <h2 id="dataset" style="padding-top:50px" class="mt-4 text-center">Upload images</h2>
 
-<form action="dropzoneUpload.php" class="dropzone" id="myAwesomeDropzone">
- <div class="fallback">
+<form action="dropzoneUpload.php" class="dropzone">
+  <div class="fallback">
     <input name="file" type="file" multiple />
-  </div> 
+  </div>
 </form>
 
       </div>
@@ -182,11 +147,12 @@ return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.p
   </div>
   </div>
 
+    <hr>
 
     <!-- reference: http://makitweb.com/make-photo-gallery-from-image-directory-with-php/ -->
-    <div style="padding-top:50px" id="viewGallery" class="row" style="padding-bottom:50px" class="mt-4 text-center">
-    <div class="col-sm-12"> 
-    <h2 class="mt-4 text-center">Image gallery</h2>
+    <div class="row" style="padding-bottom:50px" class="mt-4 text-center">
+      <div class="col-sm-12">
+    <h2 style="padding-top:50px" id="viewGallery" class="mt-4 text-center">Image gallery</h2>
     <div class="row">
       <div class="container">
         <div class="gallery">
@@ -204,42 +170,12 @@ return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.p
             //$dir = $_SESSION['target_dir'];
            ?>
 
-           <!-- Break between dataset -->
+                      <!-- Break between dataset -->
            <br>
-          <div class="row">
-           <div class="col-3">
-           <span><input type="radio" style="font-size:30px;" id="<?php echo $_SESSION['countSet']; ?>" name="dataset-check" > <span style="font-weight:bold" ng-bind="<?php echo "datasetName".$_SESSION['countSet']; ?>"> </span></input></span>
-           </div>
-           <div class="col-1">
-           <button type="button" onclick="renameOnClick(<?php echo $_SESSION['countSet']; ?>)" id="renameButton" class="btn btn-success btn-sm">Rename</button>
-           </div>
-           <div class="col-1"> 
-            <form action="delete_dataset.php" method="post">
-           <input type="hidden" name="delete_dataset" value="<?php echo $_SESSION['countSet']; ?>" />
-           <input type="submit" value="Delete" class="btn btn-danger btn-sm" />
-           </form>
-           </div>
-            <div class="col-5">
-               <p>ID: <?php $newdir=$dir; $newnewdir = substr($newdir, strpos($newdir, "/") + 1);echo substr($newnewdir, strpos($newnewdir, "/") + 1);?> </p>
-            </div>
-           </div> 
-
-         <div id="<?php echo "renameModal".$_SESSION['countSet']; ?>" class="modal">
-           <!-- Modal content -->
-         <div class="modal-content">
-             <span onclick="confirmOnClick(<?php echo $_SESSION['countSet']; ?>)" class="close">&times;</span>
-             <div class="container">
-             <div class="text-center">
-             <p>Dataset Name: <input class="text-center" type="text" ng-model="<?php echo "datasetName".$_SESSION['countSet']; ?>" ng-init= "<?php echo "datasetName".$_SESSION['countSet']."='dataset '" ?>"  ></p>
-             <div class="text-center">
-             <button type="button" onclick="confirmOnClick(<?php echo $_SESSION['countSet']; ?>)" id="<?php echo "renameConfirmButton".$_SESSION['countSet']; ?>" class="btn btn-success btn-sm">Confirm</button>
-             </div>
-             </div>
-           </div>
-          </div>
-         </div> 
-
-           <div class="container" style="padding-bottom:50px">
+           <input type="radio" id="<?php echo $_SESSION['countSet']; ?>" name="dataset-check" size="35"> <?php echo "Dataset $countSet"; ?> </input>
+           <!--<h3><?php echo "Dataset $countSet"; ?></h3>-->
+           <br>
+           <div class="container" style="padding-bottom:10px">
             <?php
             $dir = $dir.'/';
             if (is_dir($dir)){
@@ -258,11 +194,11 @@ return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.p
                     if(!is_dir($image_path) &&
                     //in_array($thumbnail_ext,$image_extensions) &&
                     in_array($image_ext,$image_extensions)){
-                  ?>
+                      ?>
 
                       <!-- Image -->
                       <a href="<?php echo $image_path; ?>">
-                        <img src="<?php echo $image_path; ?>" style="width:10%;height:auto" alt="" title=""/>
+                        <img src="<?php echo $image_path; ?>" style="width:10%;height:10%" alt="" title=""/>
                       </a>
 
                       <?php
@@ -290,60 +226,66 @@ return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.p
         </div>
       </div>
     </div>
- </div>
+  </div>
 </div>
 
+<hr>
 
 
-<div id="pipeline" style="padding-top:50px" class="container">
+<div class="container">
   <div class="jumbotron">
 <div class="row" style="padding-bottom:50px">
   <div class="col-sm-12">
-    <h2 class="mt-4 text-center">Choose your pipeline</h2>
+    <h2 id="pipeline" style="padding-top:50px" class="mt-4 text-center">Choose your pipeline</h2>
     </div>
   </div>
-  <hr> 
 
     <div class="row">
-      <div class="col-sm-12 text-center">
-        <input type="radio" "id=bundler_button" name="btn-grp"><b> Bundler</b></input>
+      <div class="col-sm-12">
+        <p style="padding-top:15px">Bundler is a structure-from-motion (SfM) system for unordered image collections. It takes  takes a set of images as input, and produces a 3D reconstruction of camera and sparse scene geometry as output. For more information, please visit <a href = "http://www.cs.cornell.edu/~snavely/bundler/">this site</a>. </p>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12">
-        <p style="padding-top:10px">Bundler is a structure-from-motion (SfM) system for unordered image collections. It takes  takes a set of images as input, and produces a 3D reconstruction of camera and sparse scene geometry as output. For more information, please visit <a href = "http://www.cs.cornell.edu/~snavely/bundler/">this site</a>. </p>
+      <div class="col-sm-12 text-center">
+        <input type="radio" "id=bundler_button" name="btn-grp"> Bundler</input>
       </div>
     </div>
     <hr>
 
 
-    <div class="row">
-      <div class="col-sm-12 text-center">
-        <input type="radio" id="poisson_button" name="btn-grp"> <b>Bundler+PMVS+Poisson Reconstruction+Parchment Texture</b></radio>
-      </div>
-    </div>
     <div class ="row">
       <div class="col-sm-12">
-        <p style="padding-top:10px">PMVS is a multi-view stereo software developed by Prof. Yasutaka Furukawa and Prof. Jean Ponce, from the University of Illinois at Urbana-Champaign. It takes a set of images and camera parameters, then reconstructs 3D structure of an object or a scene visible in the images. For more information, please visit <a href = "https://www.di.ens.fr/pmvs/">this site</a>. By choosing this pipeline you will get a dense point cloud.</p>
+        <p style="padding-top:15px">PMVS is a multi-view stereo software developed by Prof. Yasutaka Furukawa and Prof. Jean Ponce, from the University of Illinois at Urbana-Champaign. It takes a set of images and camera parameters, then reconstructs 3D structure of an object or a scene visible in the images. For more information, please visit <a href = "https://www.di.ens.fr/pmvs/">this site</a>. By choosing this pipeline you will get a dense point cloud.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <input type="radio" id="pmvs_button" name="btn-grp"> Bundler+PMVS</input>
       </div>
     </div>
     <hr>
 
-    <div class="row">
-      <div class="col-sm-12 text-center">
-        <input type="radio" id="poisson_button" name="btn-grp"> <b>Bundler+PMVS+Poisson Reconstruction+Parchment Texture</b></radio>
-      </div>
-    </div>
+
     <div class ="row">
       <div class="col-sm-12">
-        <p style="padding-top:10px">Poisson reconstruction processes are able to ignore the noise present in the data to recreate a more accurate 3D representation of your artifacts. Parchment Texture is an algorithm developed by Prof. Tim Weyrich at UCL which will output texture and geometry mesh files.</p>
+        <p style="padding-top:15px">Poisson reconstruction processes are able to ignore the noise present in the data to recreate a more accurate 3D representation of your artifacts. Parchment Texture is an algorithm developed by Prof. Tim Weyrich at UCL which will output texture and geometry mesh files.</p>
       </div>
     </div>
- <hr>
-
     <div class="row">
       <div class="col-sm-12 text-center">
-        <input type="radio" id="shadow_button" name="btn-grp"><b> Bundler+PMVS+Poisson Reconstruction+Shadow Removal+Parchment Texture</b></radio>
+        <input type="radio" id="poisson_button" name="btn-grp"> Bundler+PMVS+Poisson Reconstruction+Parchment Texture</radio>
+      </div>
+    </div>
+    <hr>
+
+    <div class ="row">
+      <div class="col-sm-12">
+        <p style="padding-top:15px">Due to uneven shrinkage, photos of fire-damaged parchments will be very likely to contain shadows, making the text hardly legible. Choose our Shadow Removal option for improved aethestic value and clarity. This shadow removal algorithm was developed by Prof. Tim Weyrich at UCL.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <input type="radio" id="shadow_button" name="btn-grp"> Bundler+PMVS+Poisson Reconstruction+Shadow Removal+Parchment Texture</radio>
         <script>
         $("#shadow_button").click(function() {
           $(this).toggleClass('btn btn-outline-success btn-lg btn btn-success btn-lg');
@@ -351,25 +293,20 @@ return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.p
         </script>
       </div>
     </div>
-    <div class ="row">
-      <div class="col-sm-12">
-        <p style="padding-top:10px">Due to uneven shrinkage, photos of fire-damaged parchments will be very likely to contain shadows, making the text hardly legible. Choose our Shadow Removal option for improved aethestic value and clarity. This shadow removal algorithm was developed by Prof. Tim Weyrich at UCL.</p>
-      </div>
-    </div>
-</div>
+  </div>
 
+
+<hr>
 
 <!-- /.row -->
-<div class="container" style="padding-top:50px" id="startService">
 <div class="row" style="padding-bottom:50px">
   <div class="col-sm-12">
-    <h2 class="mt-4 text-center">Start the service</h2>
-    <p>After uploading datasets, selecting datasets and selecting pipelines, we are now able to process the images. Our pipeline runs for several hours and you will receive an email once it is done. </p>
+    <h2 id="startService" style="padding-top:50px" class="mt-4 text-center">Start the service</h2>
+    <p>After uploading datasets, selecting datasets and selecting pipelines, we are now able to process the images. Our pipeline runs for several hours and you will receive an email once it is done.
       <div class="text-center">
     <button type="button" class="btn btn-outline-success btn-lg" onclick="startService()">Start</button>
-      </div>
-     </div>
-</div>
+  </div>
+  </div>
 </div>
 </div>
 
@@ -380,37 +317,18 @@ return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.p
   <div class="col-sm-12">
     <h2 style="padding-top:50px" class="mt-4 text-center" id="downloadResult">Download flattened parchment</h2>
     <div class="mt-4 text-center">
-    <form action="download.php" method="post">
-     <input id="IDforDL" style="width:50%" type="text" name="datasetID" placeholder="Enter the unique dataset ID emailed to you">
-     <input id="downloadButton" class="btn btn-outline-success btn-lg" type="submit" value="Download">
-    </form>
-
-<script>
-
-$(document).ready(function(){
-    $('#downloadButton').attr('disabled',true);
-    $('#IDforDL').keyup(function(){
-        if($(this).val().length !=0)
-            $('#downloadButton').attr('disabled', false);            
-        else
-            $('#downloadButton').attr('disabled',true);
-    })
-});
-
-</script>
-
-   <!-- <button class="btn btn-outline-success btn-lg" id="open_script">Download</a>
+    <button class="btn btn-outline-success btn-lg" id="open_script">Download</a>
       <script>
       $('#open_script').click(function(){
         window.location.assign('download.php');//there are many ways to do this
       });
     </script>
-    -->
   </div>
 </div>
 </div>
 </div>
 </div>
+<hr>
 
 
     <!-- /.container -->
