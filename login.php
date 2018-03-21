@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,128 +18,117 @@
   <link href="css/style.css" rel="stylesheet">
 </head>
 
-  <body>
+<body>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" style="margin-left:2%" href="#">3D Parchment Reconstruction</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" style="margin-right:2%" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="index.php">Home
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-
-
-      <li class="nav-item">
-        <div class="dropdown">
-          <a class="nav-link dropbtn" href="services.php">Services</a>
-        </div>
-      </li>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" style="margin-left:2%" href="#">3D Parchment Reconstruction</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" style="margin-right:2%" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.php">Home
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
 
 
-            <li class="nav-item">
-              <?php
-              if(isset($_SESSION['username'])) {
-                echo '<a class="nav-link" href="logout.php">Logout</a>';
-              } else {
-                echo '<a class="nav-link" href="login.php">Login</a>';
-              }
-              ?>
-            </li>
-          </ul>
-        </div>
-    </nav>
-
-    <!-- Page Content -->
-    <!-- Page Content -->
-    <div class="container">
-
-      <div id="id01" class="modal" style="display:block" style="width:auto;">
-<?php
-   if (isset($_SESSION['errorMessage'])){
-     echo "<span style='color:red;'>Your email or password is not correct</span>";
-   }
-?>
-        <form class="modal-content animate" action="action_page.php" method = "post">
-          <div class="container">
-            <label><b>Email</b></label>
-            <input type="text" placeholder="Enter Email" name="username" required>
-
-            <label><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="password" required>
-
-            <button class="loginbutton" type="submit">Login</button>
-            <label>
-              <input type="checkbox" checked="checked"> Remember me
-            </label>
+        <li class="nav-item">
+          <div class="dropdown">
+            <a class="nav-link dropbtn" href="services.php">Services</a>
           </div>
+        </li>
 
-          <div class="container" style="background-color:#f1f1f1">
-            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="loginbutton cancelbtn">Cancel</button>
-            <span class="psw">Create <a href="register.php">new account</a></span>
-          </div>
-        </form>
+
+        <li class="nav-item">
+          <?php
+          if(isset($_SESSION['username'])) {
+            echo '<a class="nav-link" href="logout.php">Logout</a>';
+          } else {
+            echo '<a class="nav-link" href="login.php">Login</a>';
+          }
+          ?>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+    <!-- animated login popup window -->
+    <div id="id01" class="modal" style="display:block" style="width:auto;">
+      <?php
+      if (isset($_SESSION['errorMessage'])){
+        echo "<span style='color:red;'>Your email or password is not correct</span>";
+      }
+      ?>
+      <form class="modal-content animate" action="action_page.php" method = "post">
+        <div class="container">
+          <label><b>Email</b></label>
+          <input type="text" placeholder="Enter Email" name="username" required>
+
+          <label><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="password" required>
+
+          <button class="loginbutton" type="submit">Login</button>
+          <label>
+            <input type="checkbox" checked="checked"> Remember me
+          </label>
+        </div>
+
+        <div class="container" style="background-color:#f1f1f1">
+          <button type="button" onclick="document.getElementById('id01').style.display='none'" class="loginbutton cancelbtn">Cancel</button>
+          <span class="psw">Create <a href="register.php">new account</a></span>
+        </div>
+      </form>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-8">
+        <h2 class="mt-4">Parchment Project</h2>
+        <p>Many museums and archives are in possession of damaged artefacts, creating a demand for techniques that can repair or restore them. Fire-damaged parchment, for example, often suffers from uneven shrinkage, waring and distortion, and necessitates new technology to flatten the parchment and to render the texts legible. Prof. Tim Weyrich of UCL Virtual Environments and Computer Graphics group has succeeded in using 3D reconstruction techniques to restore the content on fire-damaged parchment, but to make use of the algorithm, archivists and transcribers still face the difficulty of compiling the source code themselves. Therefore, we provide a web application based on the 3D reconstruction algorithm that reaches out to museums and archives. </p>
+        <p>Follow these simple steps to start flattening your parchment!</p>
+        <ol>
+          <li>Login or create an account if you do not have one</li>
+          <li>Choose your pipeline at the services page</li>
+          <li>Download images once our algoritms finish running (Our algorithms typically take a few hours and we will email you once your parchments are processed)</li>
+        </ol>
+
       </div>
-
-      <div class="row">
-        <div class="col-sm-8">
-          <h2 class="mt-4">Parchment Project</h2>
-          <p>Many museums and archives are in possession of damaged artefacts, creating a demand for techniques that can repair or restore them. Fire-damaged parchment, for example, often suffers from uneven shrinkage, waring and distortion, and necessitates new technology to flatten the parchment and to render the texts legible. Prof. Tim Weyrich of UCL Virtual Environments and Computer Graphics group has succeeded in using 3D reconstruction techniques to restore the content on fire-damaged parchment, but to make use of the algorithm, archivists and transcribers still face the difficulty of compiling the source code themselves. Therefore, we provide a web application based on the 3D reconstruction algorithm that reaches out to museums and archives. </p>
-          <p>Follow these simple steps to start flattening your parchment!</p>
-          <ol>
-  <li>Login or create an account if you do not have one</li>
-  <li>Choose your pipeline at the services page</li>
-  <li>Download images once our algoritms finish running (Our algorithms typically take a few hours and we will email you once your parchments are processed)</li>
-</ol>
-
-        </div>
-        <div class="col-sm-4">
-          <h2 class="mt-4">Contact Us</h2>
-          <img src="images/tim.png" alt="rotated tim with parchment" style="width:60%;height:auto;">
-          <address>
-            <strong>Prof. Tim Weyrich</strong>
-            <br>Department of Computer Science
-            <br>University College London
-            <br>Gower Street, WC1E 6BT
-            <br>
-          </address>
-          <address>
-            <p>Email:
+      <div class="col-sm-4">
+        <h2 class="mt-4">Contact Us</h2>
+        <img src="images/tim.png" alt="rotated tim with parchment" style="width:60%;height:auto;">
+        <address>
+          <strong>Prof. Tim Weyrich</strong>
+          <br>Department of Computer Science
+          <br>University College London
+          <br>Gower Street, WC1E 6BT
+          <br>
+        </address>
+        <address>
+          <p>Email:
             <a href="mailto:#">t.weyrich@cs.ucl.ac.uk</a><br>
             <a href = "http://reality.cs.ucl.ac.uk/weyrich.html">Prof. Weyrich's academic website</a><br>
             <a href = "http://reality.cs.ucl.ac.uk/weyrich.html">Parchment flattening project website</a><br>
             <a href = "http://reality.cs.ucl.ac.uk/projects/gpb/index.html">Great Parchment Book website</a>
-            </p>
-          </address>
+          </p>
+        </address>
 
-        </div>
       </div>
-      <!-- /.row -->
-      <div class="row">
-        <div class="col-sm-8">
-
-        </div>
-      </div>
-      <!-- /.row -->
     </div>
-    <!-- /.container -->
+  </div>
+  <!-- /.container -->
 
-    <!-- Footer -->
-    <footer class="py-3 bg-dark fixed-bottom">
+  <!-- Footer -->
+  <footer class="py-3 bg-dark fixed-bottom">
+    <p class="m-0 text-center text-white">Wanyue Zhang, Ionut Deaconu, Sergio Hernandez &copy; UCL 2017</p>
+  </footer>
 
-        <p class="m-0 text-center text-white">Wanyue Zhang, Ionut Deaconu, Sergio Hernandez &copy; UCL 2017</p>
-
-      <!-- /.container -->
-    </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="js/script.js"></script>
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  </body>
+  <!-- Bootstrap core JavaScript -->
+  <script src="js/script.js"></script>
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

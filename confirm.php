@@ -10,10 +10,10 @@ $target_dir = "uploads/" . $foldername ."/" .$id;
 $fileNum=shell_exec("ls -1q $target_user/*.jpg | wc -l");
 
 if($fileNum==0){
-  header('Location: services.php');
-  exit;
+    header('Location: services.php');
+    exit;
 }
-if( is_dir($target_dir) === false ) // Should always be false, as it is a unique id
+if( is_dir($target_dir) === false )
 {
     echo "    Creating dir   ";
     // give full permision
@@ -31,10 +31,10 @@ $db_name = 'login';
 $conn = mysqli_init();
 mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
 if (mysqli_connect_errno($conn)) {
-die('Failed to connect to MySQL: '.mysqli_connect_error());
+    die('Failed to connect to MySQL: '.mysqli_connect_error());
 }
 else{
- shell_exec("echo 'confirm database connected' >> debug.txt");
+    shell_exec("echo 'confirm database connected' >> debug.txt");
 }
 
 // Run the create table query
@@ -44,14 +44,14 @@ shell_exec("echo $trimmedUsername >> debug.txt");
 $query = "SELECT ID FROM ".$trimmedUsername;
 $result = mysqli_query($conn, $query);
 if(empty($result)) {
-                shell_exec("echo 'result empty, plan to create new table' >> debug.txt");
-                $query = "CREATE TABLE '.$trimmedUsername.' (
-                          ID int(11) AUTO_INCREMENT,
-                          DATASETID varchar(255) NOT NULL,
-                          reg_date TIMESTAMP,
-                          PRIMARY KEY  (ID)
-                          )";
-                $result = mysqli_query($dbConnection, $query);
+    shell_exec("echo 'result empty, plan to create new table' >> debug.txt");
+    $query = "CREATE TABLE '.$trimmedUsername.' (
+        ID int(11) AUTO_INCREMENT,
+        DATASETID varchar(255) NOT NULL,
+        reg_date TIMESTAMP,
+        PRIMARY KEY  (ID)
+    )";
+    $result = mysqli_query($dbConnection, $query);
 }
 //insert unique ID
 //$uniqueID=mysqli_real_escape_string($id);

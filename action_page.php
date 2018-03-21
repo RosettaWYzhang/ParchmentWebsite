@@ -1,4 +1,5 @@
 <?php
+// for user login
 // Include config file
 session_start();
 ini_set('display_errors', 1);
@@ -19,7 +20,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     // Check if email is valid
     else if (filter_var($username, FILTER_VALIDATE_EMAIL)) {
-      $username_err = 'Invalid email address.';  
+      $username_err = 'Invalid email address.';
       $_SESSION['errorMessage'] = 1;
       //echo "<script type='text/javascript'>alert('$username_err');</script>";
     }
@@ -30,7 +31,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Check if password is empty
     if(empty(trim($_POST['password']))){
         $password_err = 'Please enter your password.';
-        $_SESSION['errorMessage'] = 1; 
+        $_SESSION['errorMessage'] = 1;
    } else{
         $password = trim($_POST['password']);
     }
