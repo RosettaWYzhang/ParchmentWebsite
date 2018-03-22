@@ -275,10 +275,13 @@ $(document).ready(function(){
       </div> <!-- row ends -->
      </div>
     </div> <!-- view gallery ends -->
-    <div class="text-center">
-     <a href="#" class="btn btn-info">&laquo; Previous</a>
+    <div class="row">
+    <div class="col-sm">
+     <a href="#" class="btn btn-info float-right" style="padding-right:10px">&laquo; Previous</a>
+     </div><div class="col-sm">
      <a href="#pipeline" class="btn btn-warning">Next &raquo;</a>
     </div>
+  </div>
    </div> <!-- end jumbotron -->
   </div> <!-- end container -->
 
@@ -345,11 +348,13 @@ $(document).ready(function(){
       <p style="padding-top:10px">Due to uneven shrinkage, photos of fire-damaged parchments will be very likely to contain shadows, making the text hardly legible. Choose our Shadow Removal option for improved aethestic value and clarity. This shadow removal algorithm was developed by Prof. Tim Weyrich at UCL.</p>
      </div>
     </div>
-
-    <div class="text-center" style="padding-top:20px">
-     <a href="#viewGallery" class="btn btn-info">&laquo; Previous</a>
+    <div class="row">
+    <div class="col-sm">
+     <a href="#viewGallery" class="btn btn-info float-right" style="padding-right:10px">&laquo; Previous</a>
+     </div><div class="col-sm">
      <a href="#startService" class="btn btn-warning">Next &raquo;</a>
     </div>
+  </div>
 
    </div> <!-- end jumbotron -->
   </div> <!-- end pipeline section -->

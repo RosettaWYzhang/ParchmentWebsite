@@ -67,13 +67,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         } else{
                             // Display an error message if password is not valid
                             $password_err = 'The password you entered was not valid.';
+                            shell_exec("echo 'validation credential fail in password' >> debug.txt");
+                            $_SESSION['errorMessage'] = 1;
+                            $_SESSION['message'] = "Invalid credential. Please try again";
+                            header("location:login.php");
                         }
                     }
                 } else{
                     // Display an error message if username doesn't exist
                     $username_err = 'No account found with that username.';
+                    shell_exec("echo 'validation credential fail in username' >> debug.txt");
+                    $_SESSION['errorMessage'] = 1;
+                    $_SESSION['message'] = "Invalid credential. Please try again";
+                    header("location:login.php");
                 }
             } else{
+                    shell_exec("echo 'validation credential fail in else' >> debug.txt");
+                    $_SESSION['errorMessage'] = 1;
+                    $_SESSION['message'] = "Invalid credential. Please try again";
+                    header("location:login.php");
                 echo "Oops! Something went wrong. Please try again later.";
             }
         }
@@ -81,9 +93,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         // Close statement
         mysqli_stmt_close($stmt);
     }else{
+        shell_exec("echo 'validation credential fail' >> debug.txt");
+        $_SESSION['errorMessage'] = 1;
         $_SESSION['message'] = "Invalid credential. Please try again";
         header("location:login.php");
-        exit();
+        //exit();
     }
 
     // Close connection

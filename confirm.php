@@ -10,7 +10,7 @@ $target_dir = "uploads/" . $foldername ."/" .$id;
 $fileNum=shell_exec("ls -1q $target_user/*.jpg | wc -l");
 
 if($fileNum==0){
-    header('Location: services.php');
+    header('Location: http://parchment.cloudapp.net/services.php#viewGallery');
     exit;
 }
 if( is_dir($target_dir) === false )
@@ -70,5 +70,5 @@ if ($conn->query($sql) === TRUE) {
 mysqli_close($conn);
 
 shell_exec("sh moveFile.sh $target_user $target_dir");
-header('Location: services.php#viewGallery');
+header('Location: http://parchment.cloudapp.net/services.php#viewGallery');
 ?>

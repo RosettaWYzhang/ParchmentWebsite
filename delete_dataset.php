@@ -6,5 +6,5 @@ $username = $_SESSION["username"];
 $dir="uploads/".$username;
 
 shell_exec("bash delete_data.sh $dir $dataset_id");
-header("location:services.php");
+header('location: http://parchment.cloudapp.net/services.php#viewGallery');
 ?>
