@@ -70,5 +70,5 @@ if ($conn->query($sql) === TRUE) {
 mysqli_close($conn);
 
 shell_exec("sh moveFile.sh $target_user $target_dir");
-header('Location: services.php');
+header('Location: services.php#viewGallery');
 ?>

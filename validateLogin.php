@@ -80,6 +80,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         // Close statement
         mysqli_stmt_close($stmt);
+    }else{
+        $_SESSION['message'] = "Invalid credential. Please try again";
+        header("location:login.php");
+        exit();
     }
 
     // Close connection

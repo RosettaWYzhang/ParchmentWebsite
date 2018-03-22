@@ -63,6 +63,7 @@
       <?php
       if (isset($_SESSION['errorMessage'])){
         echo "<span style='color:red;'>Your email or password is not correct</span>";
+        unset($_SESSION['errorMessage']);
       }
       ?>
       <form class="modal-content animate" action="validateLogin.php" method = "post">
