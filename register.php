@@ -131,11 +131,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <li class="nav-item">
                         <a class="nav-link" href="index.php">Home</a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="about.php">About
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="services.php">Services</a>
                     </li>

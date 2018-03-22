@@ -83,7 +83,6 @@
 
         <div class="container" style="background-color:#f1f1f1">
           <button type="button" onclick="document.getElementById('id01').style.display='none'" class="loginbutton cancelbtn">Cancel</button>
-          <span class="psw">Forgot <a href="#">password?</a></span>
           <span class="psw">Create <a href="register.php">new account</a></span>
         </div>
       </form>

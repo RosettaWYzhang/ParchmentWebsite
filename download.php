@@ -17,7 +17,7 @@ if(file_exists($datasetname)){
   //error handling for zipping
   $zipname = 'result.zip';
   if(!file_exists($zipname)){
-    shell_exec("echo 'zipping not successful' >> debug.txt");
+    shell_exec("echo 'in download.php zipping not successful' >> debug.txt");
   }
 
   $filename = "result.zip";

@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# before processing, send user an email that processing has started
+currentDate=$(date); echo "Processing of your dataset $2 is started on $currentDate." | mail -s "Service started" $1
+
 # create a unique config file for every dataset before calling bundler
 cd /services/Parchment/bundler_sfm/
 echo IMAGE_DIR=/var/www/parchmentwebsite/uploads/$1/$2/ >> config$2.txt

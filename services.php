@@ -124,12 +124,13 @@ $(document).ready(function(){
  <div class="container" ng-app="">
 
   <!-- /.row -->
-  <div class="container" style="padding-top:50px">
+  <div class="container">
    <div class="jumbotron" style="background-color:#f8f1e5 !important">
     <div class="row" style="padding-bottom:50px">
      <div class="col-sm-12">
+<div style="padding-bottom:50px">
       <h2 id="dataset" style="padding-top:50px" class="mt-4 text-center">1. Upload images</h2>
-
+</div>
       <form action="dropzoneUpload.php" class="dropzone" id="myAwesomeDropzone">
        <div class="fallback">
         <input name="file" type="file" multiple />
@@ -166,12 +167,16 @@ $(document).ready(function(){
    </div>
   </div>
 
-  <!-- reference: http://makitweb.com/make-photo-gallery-from-image-directory-with-php/ -->
+
+<!-- reference: http://makitweb.com/make-photo-gallery-from-image-directory-with-php/ -->
+<!-- image gallery -->
   <div class="container" id="viewGallery">
    <div class="jumbotron">
     <div style="padding-top:50px" class="row" style="padding-bottom:50px" class="mt-4 text-center">
      <div class="col-sm-12">
+      <div style="padding-bottom:50px">
       <h2 class="mt-4 text-center">2. Choose dataset</h2>
+      </div>
       <p>To start the service, you must choose a dataset. To make sure you have uploaded the right files, please click on an image to view it in the image gallery. </p>
       <div class="row">
        <div class="container">
@@ -269,6 +274,9 @@ $(document).ready(function(){
           </div>
           <!-- Break between dataset -->
           <br><br>
+          <?php
+           }
+          ?>
          </div>
         </div>
        </div> <!-- row ends -->
@@ -279,8 +287,7 @@ $(document).ready(function(){
       <a href="#pipeline" class="btn btn-warning">Next &raquo;</a>
      </div>
     </div> <!-- end jumbotron -->
-   </div> <!-- end container -->
-
+  </div> <!-- end container -->
 
 
    <div id="pipeline" style="padding-top:50px" class="container">
@@ -366,7 +373,7 @@ $(document).ready(function(){
      <div class="row">
       <div class="col-sm"></div>
       <div class="col-sm">
-       <a href="#pipeline" class="btn btn-info btn-md">&laquo; Previous</a>
+       <a href="#pipeline" class="btn btn-info btn-md float-right">&laquo; Previous</a>
       </div>
 
       <div class="col-sm">
@@ -429,3 +436,4 @@ $(document).ready(function(){
 
  </body>
  </html>
+
