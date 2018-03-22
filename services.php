@@ -166,7 +166,9 @@ $(document).ready(function(){
    </div>
   </div>
 
-  <!-- reference: http://makitweb.com/make-photo-gallery-from-image-directory-with-php/ -->
+
+<!-- reference: http://makitweb.com/make-photo-gallery-from-image-directory-with-php/ -->
+<!-- image gallery -->
   <div class="container" id="viewGallery">
    <div class="jumbotron">
     <div style="padding-top:50px" class="row" style="padding-bottom:50px" class="mt-4 text-center">
@@ -269,6 +271,9 @@ $(document).ready(function(){
           </div>
           <!-- Break between dataset -->
           <br><br>
+          <?php
+           }
+          ?>
          </div>
         </div>
        </div> <!-- row ends -->
@@ -279,8 +284,7 @@ $(document).ready(function(){
       <a href="#pipeline" class="btn btn-warning">Next &raquo;</a>
      </div>
     </div> <!-- end jumbotron -->
-   </div> <!-- end container -->
-
+  </div> <!-- end container -->
 
 
    <div id="pipeline" style="padding-top:50px" class="container">
@@ -366,7 +370,7 @@ $(document).ready(function(){
      <div class="row">
       <div class="col-sm"></div>
       <div class="col-sm">
-       <a href="#pipeline" class="btn btn-info btn-md">&laquo; Previous</a>
+       <a href="#pipeline" class="btn btn-info btn-md float-right">&laquo; Previous</a>
       </div>
 
       <div class="col-sm">
@@ -429,3 +433,4 @@ $(document).ready(function(){
 
  </body>
  </html>
+
