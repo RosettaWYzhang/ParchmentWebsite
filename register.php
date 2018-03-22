@@ -120,79 +120,79 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <a class="navbar-brand" style="margin-left:2%" href="#">3D Parchment Reconstruction</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" style="margin-right:2%" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.php">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link dropbtn" href="services.php">Services</a>
-          </li>
-         <!-- show logout once the user has already logged in -->
-          <li class="nav-item">
-            <?php
-            if(isset($_SESSION['username'])) {
-              echo '<a class="nav-link" href="logout.php">Logout</a>';
-            } else {
-              echo '<a class="nav-link" href="login.php">Login</a>';
-            }
-            ?>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-
-    <!-- Page Content -->
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-
-                <h2 class="mt-4" style="margin-top:100px">Sign Up</h2>
-                <p>Please fill this form to create an account. (UCL email is preferred)</p>
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                    <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-                        <label>Email</label>
-                        <input type="text" name="username"class="form-control" value="<?php echo $username; ?>">
-                        <span class="help-block"><?php echo $username_err; ?></span>
-                    </div>
-                    <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                        <label>Password</label>
-                        <input type="password" name="password" class="form-control" value="<?php echo $password; ?>">
-                        <span class="help-block"><?php echo $password_err; ?></span>
-                    </div>
-                    <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
-                        <label>Confirm Password</label>
-                        <input type="password" name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>">
-                        <span class="help-block"><?php echo $confirm_password_err; ?></span>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-primary" value="Submit">
-                        <input type="reset" class="btn btn-default" value="Reset">
-                    </div>
-                    <p>Already have an account? <a href="login.php">Login here</a>.</p>
-
-                </form>
-
-            </div>
+        <a class="navbar-brand" style="margin-left:2%" href="#">3D Parchment Reconstruction</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" style="margin-right:2%" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.php">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link dropbtn" href="services.php">Services</a>
+                </li>
+                <!-- show logout once the user has already logged in -->
+                <li class="nav-item">
+                    <?php
+                    if(isset($_SESSION['username'])) {
+                        echo '<a class="nav-link" href="logout.php">Logout</a>';
+                    } else {
+                        echo '<a class="nav-link" href="login.php">Login</a>';
+                    }
+                    ?>
+                </li>
+            </ul>
         </div>
     </div>
-    <!-- /.container -->
-
-    <!-- Footer -->
-    <footer class="py-3 bg-dark fixed-bottom">
-      <p class="m-0 text-center text-white">Wanyue Zhang, Ionut Deaconu, Sergio Hernandez &copy; UCL 2017</p>
-    </footer>
+</nav>
 
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Page Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+
+            <h2 class="mt-4" style="margin-top:100px">Sign Up</h2>
+            <p>Please fill this form to create an account. (UCL email is preferred)</p>
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
+                    <label>Email</label>
+                    <input type="text" name="username"class="form-control" value="<?php echo $username; ?>">
+                    <span class="help-block"><?php echo $username_err; ?></span>
+                </div>
+                <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+                    <label>Password</label>
+                    <input type="password" name="password" class="form-control" value="<?php echo $password; ?>">
+                    <span class="help-block"><?php echo $password_err; ?></span>
+                </div>
+                <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
+                    <label>Confirm Password</label>
+                    <input type="password" name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>">
+                    <span class="help-block"><?php echo $confirm_password_err; ?></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Submit">
+                    <input type="reset" class="btn btn-default" value="Reset">
+                </div>
+                <p>Already have an account? <a href="login.php">Login here</a>.</p>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+<footer class="py-3 bg-dark fixed-bottom">
+    <p class="m-0 text-center text-white">Wanyue Zhang, Ionut Deaconu, Sergio Hernandez &copy; UCL 2017</p>
+</footer>
+
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

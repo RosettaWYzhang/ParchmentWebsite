@@ -47,7 +47,7 @@ session_start();
 
         </li>
 
-       <!-- show logout once the user has already logged in -->
+        <!-- show logout once the user has already logged in -->
         <li class="nav-item">
           <?php
           if(isset($_SESSION['username'])) {

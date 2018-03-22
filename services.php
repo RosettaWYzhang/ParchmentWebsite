@@ -276,12 +276,12 @@ $(document).ready(function(){
      </div>
     </div> <!-- view gallery ends -->
     <div class="row">
-    <div class="col-sm">
-     <a href="#" class="btn btn-info float-right" style="padding-right:10px">&laquo; Previous</a>
+     <div class="col-sm">
+      <a href="#" class="btn btn-info float-right" style="padding-right:10px">&laquo; Previous</a>
      </div><div class="col-sm">
-     <a href="#pipeline" class="btn btn-warning">Next &raquo;</a>
+      <a href="#pipeline" class="btn btn-warning">Next &raquo;</a>
+     </div>
     </div>
-  </div>
    </div> <!-- end jumbotron -->
   </div> <!-- end container -->
 
@@ -349,12 +349,12 @@ $(document).ready(function(){
      </div>
     </div>
     <div class="row">
-    <div class="col-sm">
-     <a href="#viewGallery" class="btn btn-info float-right" style="padding-right:10px">&laquo; Previous</a>
+     <div class="col-sm">
+      <a href="#viewGallery" class="btn btn-info float-right" style="padding-right:10px">&laquo; Previous</a>
      </div><div class="col-sm">
-     <a href="#startService" class="btn btn-warning">Next &raquo;</a>
+      <a href="#startService" class="btn btn-warning">Next &raquo;</a>
+     </div>
     </div>
-  </div>
 
    </div> <!-- end jumbotron -->
   </div> <!-- end pipeline section -->
