@@ -58,13 +58,14 @@
   <!-- Page Content -->
   <div class="container">
     <!-- animated login popup window -->
+    <!-- reference: https://www.w3schools.com/howto/howto_css_login_form.asp -->
     <div id="id01" class="modal" style="display:block" style="width:auto;">
       <?php
       if (isset($_SESSION['errorMessage'])){
         echo "<span style='color:red;'>Your email or password is not correct</span>";
       }
       ?>
-      <form class="modal-content animate" action="action_page.php" method = "post">
+      <form class="modal-content animate" action="validateLogin.php" method = "post">
         <div class="container">
           <label><b>Email</b></label>
           <input type="text" placeholder="Enter Email" name="username" required>
@@ -78,8 +79,11 @@
           </label>
         </div>
 
+
+
         <div class="container" style="background-color:#f1f1f1">
           <button type="button" onclick="document.getElementById('id01').style.display='none'" class="loginbutton cancelbtn">Cancel</button>
+          <span class="psw">Forgot <a href="#">password?</a></span>
           <span class="psw">Create <a href="register.php">new account</a></span>
         </div>
       </form>

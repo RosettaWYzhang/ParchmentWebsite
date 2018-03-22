@@ -98,7 +98,7 @@ $(document).ready(function(){
       </a>
       <div class="dropdown-content">
        <a href="#">Upload dataset</a>
-       <a href="#viewGallery">Image gallery</a>
+       <a href="#viewGallery">Choose dataset</a>
        <a href="#pipeline">Choose pipeline</a>
        <a href="#startService">Start the service</a>
        <a href="#downloadResult">Download result</a>
@@ -125,10 +125,10 @@ $(document).ready(function(){
 
   <!-- /.row -->
   <div class="container" style="padding-top:50px">
-   <div class="jumbotron">
+   <div class="jumbotron" style="background-color:#f8f1e5 !important">
     <div class="row" style="padding-bottom:50px">
      <div class="col-sm-12">
-      <h2 id="dataset" style="padding-top:50px" class="mt-4 text-center">Upload images</h2>
+      <h2 id="dataset" style="padding-top:50px" class="mt-4 text-center">1. Upload images</h2>
 
       <form action="dropzoneUpload.php" class="dropzone" id="myAwesomeDropzone">
        <div class="fallback">
@@ -139,249 +139,293 @@ $(document).ready(function(){
      </div>
     </div>
     <div class="row">
+     <div class="col-sm"></div><div class="col-sm"></div>
+
      <div class="col-sm">
       <form action="confirm.php" method="get">
-       <input type="submit" value="Confirm" class="btn btn-outline-success float-right" style="padding-right:10px">
+       <input type="submit" value="Confirm" class="btn btn-success">
       </form>
      </div>
+
      <div class="col-sm">
       <form action="cancel.php" method="get">
-       <input type="submit" value="Cancel" class="btn btn-outline-danger" style="padding-left:10px">
+       <input type="submit" value="Cancel" class="btn btn-danger">
       </form>
      </div>
+
+     <div class="col-sm">
+      <a href="#viewGallery" class="btn btn-warning">Next &raquo;</a>
+     </div>
+
+     <div class="col-sm"></div><div class="col-sm"></div>
+
     </div>
+
+
 
    </div>
   </div>
 
   <!-- reference: http://makitweb.com/make-photo-gallery-from-image-directory-with-php/ -->
-  <div style="padding-top:50px" id="viewGallery" class="row" style="padding-bottom:50px" class="mt-4 text-center">
-   <div class="col-sm-12">
-    <h2 class="mt-4 text-center">Image gallery</h2>
-    <div class="row">
-     <div class="container">
-      <div class="gallery">
-       <?php
-       // Image extensions
-       $image_extensions = array("png","jpg","jpeg","gif");
-       // Target directory from upload.php
-       $foldername = $_SESSION['username'];
-       $main_dir = "uploads/" . $foldername;
-       $directories = glob($main_dir . '/*' , GLOB_ONLYDIR);
-       $countSet = 0;
-       foreach ($directories as &$dir) {
-        $countSet++;
-        $_SESSION['countSet'] = $countSet;
-        ?>
-        <!-- Break between dataset -->
-        <br>
-        <div class="row">
-         <div class="col-3">
-          <span><input type="radio" style="font-size:30px;" id="<?php echo $_SESSION['countSet']; ?>" name="dataset-check" > <span style="font-weight:bold" ng-bind="<?php echo "datasetName".$_SESSION['countSet']; ?>"> </span></input></span>
-         </div>
-         <div class="col-1">
-          <button type="button" onclick="renameOnClick(<?php echo $_SESSION['countSet']; ?>)" id="renameButton" class="btn btn-success btn-sm">Rename</button>
-         </div>
-         <div class="col-1">
-          <form action="delete_dataset.php" method="post">
-           <input type="hidden" name="delete_dataset" value="<?php echo $_SESSION['countSet']; ?>" />
-           <input type="submit" value="Delete" class="btn btn-danger btn-sm" />
-          </form>
-         </div>
-         <div class="col-5">
-          <p>ID: <?php $newdir=$dir; $newnewdir = substr($newdir, strpos($newdir, "/") + 1);echo substr($newnewdir, strpos($newnewdir, "/") + 1);?> </p>
-         </div>
-        </div>
+  <div class="container" id="viewGallery">
+   <div class="jumbotron">
+    <div style="padding-top:50px" class="row" style="padding-bottom:50px" class="mt-4 text-center">
+     <div class="col-sm-12">
+      <h2 class="mt-4 text-center">2. Choose dataset</h2>
+      <p>To start the service, you must choose a dataset. To make sure you have uploaded the right files, please click on an image to view it in the image gallery. </p>
+      <div class="row">
+       <div class="container">
+        <div class="gallery">
+         <?php
+         // Image extensions
+         $image_extensions = array("png","jpg","jpeg","gif");
+         // Target directory from upload.php
+         $foldername = $_SESSION['username'];
+         $main_dir = "uploads/" . $foldername;
+         $directories = glob($main_dir . '/*' , GLOB_ONLYDIR);
+         $countSet = 0;
+         foreach ($directories as &$dir) {
+          $countSet++;
+          $_SESSION['countSet'] = $countSet;
+          ?>
+          <!-- Break between dataset -->
+          <br>
+          <div class="row">
+           <div class="col-3">
+            <span><input type="radio" style="font-size:30px;" id="<?php echo $_SESSION['countSet']; ?>" name="dataset-check" > <span style="font-weight:bold" ng-bind="<?php echo "datasetName".$_SESSION['countSet']; ?>"> </span></input></span>
+           </div>
+           <div class="col-1">
+            <button type="button" onclick="renameOnClick(<?php echo $_SESSION['countSet']; ?>)" id="renameButton" class="btn btn-success btn-sm">Rename</button>
+           </div>
+           <div class="col-1">
+            <form action="delete_dataset.php" method="post">
+             <input type="hidden" name="delete_dataset" value="<?php echo $_SESSION['countSet']; ?>" />
+             <input type="submit" value="Delete" class="btn btn-danger btn-sm" />
+            </form>
+           </div>
+           <div class="col-5">
+            <p>ID: <?php $newdir=$dir; $newnewdir = substr($newdir, strpos($newdir, "/") + 1);echo substr($newnewdir, strpos($newnewdir, "/") + 1);?> </p>
+           </div>
+          </div>
 
-        <!-- popup window which allows the user to rename the dataset -->
-        <div id="<?php echo "renameModal".$_SESSION['countSet']; ?>" class="modal">
-         <!-- Modal content -->
-         <div class="modal-content">
-          <span onclick="confirmOnClick(<?php echo $_SESSION['countSet']; ?>)" class="close">&times;</span>
-          <div class="container">
-           <div class="text-center">
-            <p>Dataset Name: <input class="text-center" type="text" ng-model="<?php echo "datasetName".$_SESSION['countSet']; ?>" ng-init= "<?php echo "datasetName".$_SESSION['countSet']."='dataset '" ?>"  ></p>
-            <div class="text-center">
-             <button type="button" onclick="confirmOnClick(<?php echo $_SESSION['countSet']; ?>)" id="<?php echo "renameConfirmButton".$_SESSION['countSet']; ?>" class="btn btn-success btn-sm">Confirm</button>
+          <!-- popup window which allows the user to rename the dataset -->
+          <div id="<?php echo "renameModal".$_SESSION['countSet']; ?>" class="modal">
+           <!-- Modal content -->
+           <div class="modal-content">
+            <span onclick="confirmOnClick(<?php echo $_SESSION['countSet']; ?>)" class="close">&times;</span>
+            <div class="container">
+             <div class="text-center">
+              <p>Dataset Name: <input class="text-center" type="text" ng-model="<?php echo "datasetName".$_SESSION['countSet']; ?>" ng-init= "<?php echo "datasetName".$_SESSION['countSet']."='dataset '" ?>"  ></p>
+              <div class="text-center">
+               <button type="button" onclick="confirmOnClick(<?php echo $_SESSION['countSet']; ?>)" id="<?php echo "renameConfirmButton".$_SESSION['countSet']; ?>" class="btn btn-success btn-sm">Confirm</button>
+              </div>
+             </div>
             </div>
            </div>
           </div>
-         </div>
-        </div>
 
-        <div class="container" style="padding-bottom:50px">
-         <?php
-         $dir = $dir.'/';
-         if (is_dir($dir)){
-          if ($dh = opendir($dir)){
-           $count = 1;
-           // Read files
-           while (($file = readdir($dh)) !== false){
-            if($file != '' && $file != '.' && $file != '..'){
-             // Thumbnail image path
-             // $thumbnail_path = "images/thumbnail/".$file;
-             // Image path
-             $image_path = $dir.$file;
-             //$thumbnail_ext = pathinfo($thumbnail_path, PATHINFO_EXTENSION);
-             $image_ext = pathinfo($image_path, PATHINFO_EXTENSION);
-             // Check its not folder and it is image file
-             if(!is_dir($image_path) &&
-             //in_array($thumbnail_ext,$image_extensions) &&
-             in_array($image_ext,$image_extensions)){
-              ?>
 
-              <!-- Image -->
-              <a href="<?php echo $image_path; ?>">
-               <img src="<?php echo $image_path; ?>" style="width:10%;height:auto" alt="" title=""/>
-              </a>
+          <div class="container" style="padding-bottom:50px">
+           <?php
+           $dir = $dir.'/';
+           if (is_dir($dir)){
+            if ($dh = opendir($dir)){
+             $count = 1;
+             // Read files
+             while (($file = readdir($dh)) !== false){
+              if($file != '' && $file != '.' && $file != '..'){
+               // Thumbnail image path
+               // $thumbnail_path = "images/thumbnail/".$file;
+               // Image path
+               $image_path = $dir.$file;
+               //$thumbnail_ext = pathinfo($thumbnail_path, PATHINFO_EXTENSION);
+               $image_ext = pathinfo($image_path, PATHINFO_EXTENSION);
+               // Check its not folder and it is image file
+               if(!is_dir($image_path) &&
+               //in_array($thumbnail_ext,$image_extensions) &&
+               in_array($image_ext,$image_extensions)){
+                ?>
 
-              <?php
-              // display 10 images in one row
-              if( $count%10 == 0){
-               ?>
-               <div class="clear"></div>
-               <?php
+                <!-- Image -->
+                <a href="<?php echo $image_path; ?>">
+                 <img src="<?php echo $image_path; ?>" style="width:10%;height:auto" alt="" title=""/>
+                </a>
+
+                <?php
+                // display 10 images in one row
+                if( $count%10 == 0){
+                 ?>
+                 <div class="clear"></div>
+                 <?php
+                }
+                $count++;
+               }
               }
-              $count++;
              }
+             closedir($dh);
             }
            }
-           closedir($dh);
-          }
-         }
-         ?>
+           ?>
+          </div>
+          <!-- Break between dataset -->
+          <br><br>
+         </div>
         </div>
-        <!-- Break between dataset -->
-        <br><br>
+       </div> <!-- row ends -->
+      </div>
+     </div> <!-- view gallery ends -->
+     <div class="text-center">
+      <a href="#" class="btn btn-info">&laquo; Previous</a>
+      <a href="#pipeline" class="btn btn-warning">Next &raquo;</a>
+     </div>
+    </div> <!-- end jumbotron -->
+   </div> <!-- end container -->
+
+
+
+   <div id="pipeline" style="padding-top:50px" class="container">
+    <div class="jumbotron" style="background-color:#f8f1e5 !important">
+
+     <div class="row" style="padding-bottom:50px">
+      <div class="col-sm-12">
+       <h2 class="mt-4 text-center">3. Choose your pipeline</h2>
       </div>
      </div>
-    </div>
-   </div>
-  </div>
+     <hr>
+
+     <div class="row">
+      <div class="col-sm-12 text-center">
+       <input type="radio" "id=bundler_button" name="btn-grp"><b> Bundler</b></input>
+      </div>
+     </div>
+     <div class="row">
+      <div class="col-sm-12">
+       <p style="padding-top:10px">Bundler is a structure-from-motion (SfM) system for unordered image collections. It takes  takes a set of images as input, and produces a 3D reconstruction of camera and sparse scene geometry as output. For more information, please visit <a href = "http://www.cs.cornell.edu/~snavely/bundler/">this site</a>. </p>
+      </div>
+     </div>
+     <hr>
 
 
+     <div class="row">
+      <div class="col-sm-12 text-center">
+       <input type="radio" id="poisson_button" name="btn-grp"> <b>Bundler+PMVS+Poisson Reconstruction+Parchment Texture</b></radio>
+      </div>
+     </div>
+     <div class ="row">
+      <div class="col-sm-12">
+       <p style="padding-top:10px">PMVS is a multi-view stereo software developed by Prof. Yasutaka Furukawa and Prof. Jean Ponce, from the University of Illinois at Urbana-Champaign. It takes a set of images and camera parameters, then reconstructs 3D structure of an object or a scene visible in the images. For more information, please visit <a href = "https://www.di.ens.fr/pmvs/">this site</a>. By choosing this pipeline you will get a dense point cloud.</p>
+      </div>
+     </div>
+     <hr>
 
-  <div id="pipeline" style="padding-top:50px" class="container">
-   <div class="jumbotron">
-    <div class="row" style="padding-bottom:50px">
-     <div class="col-sm-12">
-      <h2 class="mt-4 text-center">Choose your pipeline</h2>
+     <div class="row">
+      <div class="col-sm-12 text-center">
+       <input type="radio" id="poisson_button" name="btn-grp"> <b>Bundler+PMVS+Poisson Reconstruction+Parchment Texture</b></radio>
+      </div>
      </div>
-    </div>
-    <hr>
+     <div class ="row">
+      <div class="col-sm-12">
+       <p style="padding-top:10px">Poisson reconstruction processes are able to ignore the noise present in the data to recreate a more accurate 3D representation of your artifacts. Parchment Texture is an algorithm developed by Prof. Tim Weyrich at UCL which will output texture and geometry mesh files.</p>
+      </div>
+     </div>
+     <hr>
 
-    <div class="row">
-     <div class="col-sm-12 text-center">
-      <input type="radio" "id=bundler_button" name="btn-grp"><b> Bundler</b></input>
+     <div class="row">
+      <div class="col-sm-12 text-center">
+       <input type="radio" id="shadow_button" name="btn-grp"><b> Bundler+PMVS+Poisson Reconstruction+Shadow Removal+Parchment Texture</b></radio>
+       <script>
+       $("#shadow_button").click(function() {
+        $(this).toggleClass('btn btn-outline-success btn-lg btn btn-success btn-lg');
+       });
+       </script>
+      </div>
      </div>
-    </div>
-    <div class="row">
-     <div class="col-sm-12">
-      <p style="padding-top:10px">Bundler is a structure-from-motion (SfM) system for unordered image collections. It takes  takes a set of images as input, and produces a 3D reconstruction of camera and sparse scene geometry as output. For more information, please visit <a href = "http://www.cs.cornell.edu/~snavely/bundler/">this site</a>. </p>
+     <div class ="row">
+      <div class="col-sm-12">
+       <p style="padding-top:10px">Due to uneven shrinkage, photos of fire-damaged parchments will be very likely to contain shadows, making the text hardly legible. Choose our Shadow Removal option for improved aethestic value and clarity. This shadow removal algorithm was developed by Prof. Tim Weyrich at UCL.</p>
+      </div>
      </div>
-    </div>
-    <hr>
 
+     <div class="text-center" style="padding-top:20px">
+      <a href="#viewGallery" class="btn btn-info">&laquo; Previous</a>
+      <a href="#startService" class="btn btn-warning">Next &raquo;</a>
+     </div>
 
-    <div class="row">
-     <div class="col-sm-12 text-center">
-      <input type="radio" id="poisson_button" name="btn-grp"> <b>Bundler+PMVS+Poisson Reconstruction+Parchment Texture</b></radio>
-     </div>
-    </div>
-    <div class ="row">
-     <div class="col-sm-12">
-      <p style="padding-top:10px">PMVS is a multi-view stereo software developed by Prof. Yasutaka Furukawa and Prof. Jean Ponce, from the University of Illinois at Urbana-Champaign. It takes a set of images and camera parameters, then reconstructs 3D structure of an object or a scene visible in the images. For more information, please visit <a href = "https://www.di.ens.fr/pmvs/">this site</a>. By choosing this pipeline you will get a dense point cloud.</p>
-     </div>
-    </div>
-    <hr>
+    </div> <!-- end jumbotron -->
+   </div> <!-- end pipeline section -->
 
-    <div class="row">
-     <div class="col-sm-12 text-center">
-      <input type="radio" id="poisson_button" name="btn-grp"> <b>Bundler+PMVS+Poisson Reconstruction+Parchment Texture</b></radio>
+   <!-- /.row -->
+   <div class="container" style="padding-top:50px" id="startService">
+    <div class="jumbotron">
+     <div class="row" style="padding-bottom:50px">
+      <div class="col-sm-12">
+       <h2 class="mt-4 text-center">4. Start the service</h2>
+       <p>After uploading datasets, selecting datasets and selecting pipelines, we are now able to process the images. Our pipeline runs for several hours and you will receive an email once it is done. </p>
+      </div>
      </div>
-    </div>
-    <div class ="row">
-     <div class="col-sm-12">
-      <p style="padding-top:10px">Poisson reconstruction processes are able to ignore the noise present in the data to recreate a more accurate 3D representation of your artifacts. Parchment Texture is an algorithm developed by Prof. Tim Weyrich at UCL which will output texture and geometry mesh files.</p>
-     </div>
-    </div>
-    <hr>
+     <div class="row">
+      <div class="col-sm"></div>
+      <div class="col-sm">
+       <a href="#pipeline" class="btn btn-info btn-md">&laquo; Previous</a>
+      </div>
 
-    <div class="row">
-     <div class="col-sm-12 text-center">
-      <input type="radio" id="shadow_button" name="btn-grp"><b> Bundler+PMVS+Poisson Reconstruction+Shadow Removal+Parchment Texture</b></radio>
-      <script>
-      $("#shadow_button").click(function() {
-       $(this).toggleClass('btn btn-outline-success btn-lg btn btn-success btn-lg');
-      });
-      </script>
-     </div>
-    </div>
-    <div class ="row">
-     <div class="col-sm-12">
-      <p style="padding-top:10px">Due to uneven shrinkage, photos of fire-damaged parchments will be very likely to contain shadows, making the text hardly legible. Choose our Shadow Removal option for improved aethestic value and clarity. This shadow removal algorithm was developed by Prof. Tim Weyrich at UCL.</p>
+      <div class="col-sm">
+       <div class="text-center">
+        <button type="button" class="btn btn-success btn-md" onclick="startService()">Start</button>
+       </div>
+      </div>
+
+      <div class="col-sm">
+       <a href="#downloadResult" class="btn btn-warning btn-md">Next &raquo;</a>
+      </div>
+      <div class="col-sm"></div>
+
      </div>
     </div>
    </div>
 
 
    <!-- /.row -->
-   <div class="container" style="padding-top:50px" id="startService">
-    <div class="row" style="padding-bottom:50px">
-     <div class="col-sm-12">
-      <h2 class="mt-4 text-center">Start the service</h2>
-      <p>After uploading datasets, selecting datasets and selecting pipelines, we are now able to process the images. Our pipeline runs for several hours and you will receive an email once it is done. </p>
-      <div class="text-center">
-       <button type="button" class="btn btn-outline-success btn-lg" onclick="startService()">Start</button>
+   <div class="container">
+    <div class="jumbotron" style="background-color:#f8f1e5 !important">
+     <div class="row" style="padding-bottom:50px">
+      <div class="col-sm-12">
+       <h2 style="padding-top:50px" class="mt-4 text-center" id="downloadResult">5. Download flattened parchments</h2>
+       <div class="mt-4 text-center">
+        <form action="download.php" method="post">
+         <input id="IDforDL" style="width:50%" type="text" name="datasetID" placeholder="Enter the unique dataset ID emailed to you">
+         <input id="downloadButton" class="btn btn-success btn-lg" type="submit" value="Download">
+        </form>
+
+        <script>
+        // disable download button if no ID is entered
+        $(document).ready(function(){
+         $('#downloadButton').attr('disabled',true);
+         $('#IDforDL').keyup(function(){
+          if($(this).val().length !=0)
+          $('#downloadButton').attr('disabled', false);
+          else
+          $('#downloadButton').attr('disabled',true);
+         })
+        });
+        </script>
+       </div>
       </div>
+     </div>
+     <div class="text-center">
+      <a href="#startService" class="btn btn-info">&laquo; Previous</a>
      </div>
     </div>
    </div>
+
+
+   <!-- /.container -->
   </div>
 
-  <!-- /.row -->
-  <div class="container">
-   <div class="jumbotron">
-    <div class="row" style="padding-bottom:50px">
-     <div class="col-sm-12">
-      <h2 style="padding-top:50px" class="mt-4 text-center" id="downloadResult">Download flattened parchment</h2>
-      <div class="mt-4 text-center">
-       <form action="download.php" method="post">
-        <input id="IDforDL" style="width:50%" type="text" name="datasetID" placeholder="Enter the unique dataset ID emailed to you">
-        <input id="downloadButton" class="btn btn-outline-success btn-lg" type="submit" value="Download">
-       </form>
+  <!-- Footer -->
+  <footer class="py-3 bg-dark fixed-bottom">
+   <p class="m-0 text-center text-white">Wanyue Zhang, Ionut Deaconu, Sergio Hernandez &copy; UCL 2017</p>
+  </footer>
 
-       <script>
-       // disable download button if no ID is entered
-       $(document).ready(function(){
-        $('#downloadButton').attr('disabled',true);
-        $('#IDforDL').keyup(function(){
-         if($(this).val().length !=0)
-         $('#downloadButton').attr('disabled', false);
-         else
-         $('#downloadButton').attr('disabled',true);
-        })
-       });
-      </script>
- </div>
-</div>
-</div>
-</div>
-
-
-<!-- /.container -->
-</div>
-
-<!-- Footer -->
-<footer class="py-3 bg-dark fixed-bottom">
-
- <p class="m-0 text-center text-white">Wanyue Zhang, Ionut Deaconu, Sergio Hernandez &copy; UCL 2017</p>
-
- <!-- /.container -->
-</footer>
-
-
-
-</body>
-
-</html>
+ </body>
+ </html>
